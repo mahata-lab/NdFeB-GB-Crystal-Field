@@ -1,0 +1,28 @@
+# STEP2 : SA-CASSCF + SOC + AILFT + g-tensor, reads step1.gbw
+! DKH2 RIJCOSX SARC2-DKH-QZVP AutoAux CASSCF MORead
+%moinp "step1.gbw"
+%maxcore 14000
+%pal nprocs 16 end
+%pointcharges "sphere.pc"
+%casscf
+  ActConstraints 1
+  nel  9
+  norb 7
+  mult 6,4
+  nroots 21,224
+  maxiter 200
+  orbstep    SuperCI
+  switchstep DIIS
+  shiftup 0.5
+  shiftdn 0.5
+  minshift 0.1
+  rel
+    dosoc true
+    gtensor true
+    printlevel 3
+  end
+  actorbs forbs
+end
+* xyz 3 6
+Dy   2.16993203 6.60607197 12.08394074
+*

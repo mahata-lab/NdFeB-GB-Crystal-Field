@@ -1,0 +1,41 @@
+# STEP2 : spin-free SA-CASSCF + AILFT
+! RIJCOSX def2-TZVP AutoAux CASSCF MORead
+%moinp "step1.gbw"
+%maxcore 3000
+%pal nprocs 12 end
+%pointcharges "sphere.pc"
+%casscf
+  ActConstraints 1
+  nel  3
+  norb 7
+  mult 4,2
+  nroots 35,112
+  maxiter 200
+  orbstep SuperCI
+  switchstep DIIS
+  shiftup 0.5
+  shiftdn 0.5
+  minshift 0.1
+  actorbs forbs
+end
+* xyz 3 4
+Nd   7.41957861 7.41957861 12.17172751
+Fe>  -0.214286      6.764914     4.586460    10.748417  NewECP "HayWadt" end
+Fe>  -0.214286      4.586460     6.764914    10.748417  NewECP "HayWadt" end
+Fe>  -0.214286      8.658327     5.647269     9.946296  NewECP "HayWadt" end
+Fe>  -0.214286      5.647269     8.658327     9.946296  NewECP "HayWadt" end
+Fe>  -0.214286      7.938846     7.938846     9.452210  NewECP "HayWadt" end
+Fe>  -0.214286      6.171497     6.171497     9.053903  NewECP "HayWadt" end
+Fe>  -0.214286      6.789652     4.910376    13.654755  NewECP "HayWadt" end
+Fe>  -0.214286      4.910376     6.789652    13.654755  NewECP "HayWadt" end
+Fe>  -0.214286      7.151769     7.151769    15.199426  NewECP "HayWadt" end
+Nd>   3.000000      6.606072    10.945936    12.083941  NewECP "def2-ECP" end
+Fe>  -0.214286      5.624998     9.076688    14.260161  NewECP "HayWadt" end
+Fe>  -0.214286      7.926416     9.625592    14.605653  NewECP "HayWadt" end
+Fe>  -0.214286      4.388002     8.776004    12.143035  NewECP "HayWadt" end
+Nd>   3.000000     10.945936     6.606072    12.083941  NewECP "def2-ECP" end
+Fe>  -0.214286      9.076688     5.624998    14.260161  NewECP "HayWadt" end
+Fe>  -0.214286      9.625592     7.926416    14.605653  NewECP "HayWadt" end
+Fe>  -0.214286      8.776004     4.388002    12.143035  NewECP "HayWadt" end
+Nd>   3.000000     10.132429    10.132429    12.171728  NewECP "def2-ECP" end
+*

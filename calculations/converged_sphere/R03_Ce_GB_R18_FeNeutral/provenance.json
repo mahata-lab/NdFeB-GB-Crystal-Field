@@ -1,0 +1,24 @@
+{
+ "job": "R03_Ce_GB_R18_FeNeutral",
+ "ion": "Ce",
+ "environment": "GB",
+ "atom_1based": 13,
+ "R_A": 18,
+ "level": "DKH2/SARC2-DKH-QZVP, SA-CASSCF + QDPT-SOC + AILFT",
+ "center_A": [
+  2.16993203,
+  6.60607197,
+  12.08394074
+ ],
+ "charges": {
+  "RE": 3.0,
+  "Fe": -0.214286,
+  "B": -3.0
+ },
+ "n_pc": 1797,
+ "net_charge": -0.0,
+ "residual_before_neutralisation": -21.0,
+ "outer_shell_charges": 549,
+ "outer_shell_correction_e": 0.0383,
+ "min_pc_dist_A": 2.7656
+}

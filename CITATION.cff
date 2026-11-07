@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use these data or scripts, please cite the article below."
+title: "Grain-boundary 4f crystal fields in Nd2Fe14B: inputs, embeddings and analysis"
+authors:
+  - family-names: Mahata
+    given-names: Avik
+    affiliation: Merrimack College
+  - family-names: Zakotnik
+    given-names: M.
+    affiliation: Medelan LLC
+repository-code: "https://github.com/mahata-lab/NdFeB-GB-Crystal-Field"
+license: MIT
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Mahata
+      given-names: Avik
+    - family-names: Zakotnik
+      given-names: M.
+  title: "Grain Boundary Distortion Strengthens the Local 4f Crystal Field and Separates Heavy from Light Lanthanides in Nd2Fe14B"
+  journal: Materialia
+  year: 2026

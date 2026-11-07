@@ -1,0 +1,25 @@
+# STEP1 : Dy3+ in GB Ewald field, reads clean atomic 4f from step0.gbw
+! DKH2 RIJCOSX SARC2-DKH-QZVP AutoAux CASSCF MORead
+%moinp "step0.gbw"
+%maxcore 14000
+%pal nprocs 16 end
+%pointcharges "GB_defect.pc"
+%scf
+  maxiter 800
+end
+%casscf
+  nel  9
+  norb 7
+  mult 6
+  nroots 21
+  maxiter 400
+  orbstep    SuperCI
+  switchstep DIIS
+  shiftup 1.0
+  shiftdn 1.0
+  minshift 0.2
+  actorbs forbs
+end
+* xyz 3 6
+Dy   2.16993  6.60607  12.08394
+*

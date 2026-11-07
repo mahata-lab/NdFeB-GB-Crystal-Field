@@ -1,0 +1,24 @@
+{
+ "job": "W02_Nd_GBD6",
+ "ion": "Nd",
+ "environment": "GB",
+ "atom_1based": 6,
+ "R_A": 25,
+ "level": "DKH2/SARC2-DKH-QZVP, SA-CASSCF + QDPT-SOC + AILFT",
+ "center_A": [
+  6.70878517,
+  2.06721883,
+  6.06089175
+ ],
+ "charges": {
+  "RE": 3.0,
+  "Fe": -0.214286,
+  "B": -3.0
+ },
+ "n_pc": 4774,
+ "net_charge": 0.0,
+ "residual_before_neutralisation": -26.571,
+ "outer_shell_charges": 1051,
+ "outer_shell_correction_e": 0.0253,
+ "min_pc_dist_A": 3.009
+}

@@ -1,0 +1,24 @@
+{
+ "job": "R22_Dy_bulk_R25_FeNeutral",
+ "ion": "Dy",
+ "environment": "bulk",
+ "atom_1based": 2,
+ "R_A": 25,
+ "level": "DKH2/SARC2-DKH-QZVP, SA-CASSCF + QDPT-SOC + AILFT",
+ "center_A": [
+  3.12667013,
+  3.12667013,
+  6.06497448
+ ],
+ "charges": {
+  "RE": 3.0,
+  "Fe": -0.214286,
+  "B": -3.0
+ },
+ "n_pc": 4768,
+ "net_charge": -0.0,
+ "residual_before_neutralisation": 79.714,
+ "outer_shell_charges": 1046,
+ "outer_shell_correction_e": -0.0762,
+ "min_pc_dist_A": 2.8942
+}

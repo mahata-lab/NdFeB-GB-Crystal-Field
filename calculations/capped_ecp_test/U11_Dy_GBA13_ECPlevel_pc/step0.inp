@@ -1,0 +1,20 @@
+# STEP0 : free Dy3+ ion, def2-TZVP/def2-ECP
+! RIJCOSX def2-TZVP AutoAux CASSCF
+%maxcore 3000
+%pal nprocs 12 end
+%casscf
+  nel  9
+  norb 7
+  mult 6
+  nroots 21
+  maxiter 300
+  orbstep SuperCI
+  switchstep DIIS
+  shiftup 1.0
+  shiftdn 1.0
+  minshift 0.2
+  actorbs forbs
+end
+* xyz 3 6
+Dy   0.0 0.0 0.0
+*

@@ -1,0 +1,30 @@
+{
+ "job": "V05_Dy_GBA13_Bsub",
+ "ion": "Dy",
+ "environment": "GB",
+ "atom_1based": 13,
+ "R_A": 25,
+ "substitution": "Bsub",
+ "substituted_atom_1based": 19,
+ "substituted_element": "Fe",
+ "new_element": "B",
+ "distance_A": 2.7656,
+ "note": "unrelaxed substitution, one per periodic GB cell",
+ "level": "DKH2/SARC2-DKH-QZVP, SA-CASSCF + QDPT-SOC + AILFT",
+ "center_A": [
+  2.16993203,
+  6.60607197,
+  12.08394074
+ ],
+ "charges": {
+  "RE": 3.0,
+  "Fe": -0.214286,
+  "B": -3.0
+ },
+ "n_pc": 4760,
+ "net_charge": -0.0,
+ "residual_before_neutralisation": -143.786,
+ "outer_shell_charges": 1061,
+ "outer_shell_correction_e": 0.1355,
+ "min_pc_dist_A": 2.7656
+}

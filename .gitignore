@@ -1,0 +1,10 @@
+# ORCA run products (not part of the repository)
+*.gbw
+*.tmp
+*.densities*
+*.property.txt
+*.out
+*.log
+*.engrad
+rotate.txt
+__pycache__/

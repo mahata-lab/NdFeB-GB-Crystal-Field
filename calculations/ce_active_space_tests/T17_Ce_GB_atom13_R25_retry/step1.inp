@@ -1,0 +1,24 @@
+# STEP1 : Ce3+ GB atom 13 in 25 A sphere; guess = converged 4f orbitals of R03 (same site, 18 A sphere)
+! DKH2 RIJCOSX SARC2-DKH-QZVP AutoAux CASSCF MORead
+%moinp "guess_R18_step2.gbw"
+%maxcore 14000
+%pal nprocs 16 end
+%pointcharges "sphere.pc"
+%scf maxiter 800 end
+%casscf
+  ActConstraints 1
+  nel  1
+  norb 7
+  mult 2
+  nroots 7
+  maxiter 800
+  orbstep    SuperCI
+  switchstep DIIS
+  shiftup 1.0
+  shiftdn 1.0
+  minshift 0.2
+  actorbs forbs
+end
+* xyz 3 2
+Ce   2.16993203 6.60607197 12.08394074
+*

@@ -1,0 +1,27 @@
+# STEP2 : SA-CASSCF + SOC + AILFT, reads step1.gbw
+! DKH2 RIJCOSX SARC-DKH-TZVP AutoAux CASSCF MORead
+%moinp "step1.gbw"
+%maxcore 14000
+%pal nprocs 16 end
+%pointcharges "Bulk_defect.pc"
+%casscf
+  nel  3
+  norb 7
+  mult 4,2
+  nroots 35,112
+  maxiter 200
+  orbstep    SuperCI
+  switchstep DIIS
+  shiftup 0.5
+  shiftdn 0.5
+  minshift 0.1
+  rel
+    dosoc true
+    gtensor true
+    printlevel 3
+  end
+  actorbs forbs
+end
+* xyz 3 4
+Nd   3.12667013 3.12667013 6.06497448
+*

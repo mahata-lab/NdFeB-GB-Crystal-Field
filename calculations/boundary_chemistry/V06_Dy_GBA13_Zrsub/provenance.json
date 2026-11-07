@@ -1,0 +1,31 @@
+{
+ "job": "V06_Dy_GBA13_Zrsub",
+ "ion": "Dy",
+ "environment": "GB",
+ "atom_1based": 13,
+ "R_A": 25,
+ "substitution": "Zrsub",
+ "substituted_atom_1based": 9,
+ "substituted_element": "Nd",
+ "new_element": "Zr",
+ "distance_A": 3.62,
+ "note": "unrelaxed substitution, one per periodic GB cell",
+ "level": "DKH2/SARC2-DKH-QZVP, SA-CASSCF + QDPT-SOC + AILFT",
+ "center_A": [
+  2.16993203,
+  6.60607197,
+  12.08394074
+ ],
+ "charges": {
+  "RE": 3.0,
+  "Fe": -0.214286,
+  "B": -3.0,
+  "Zr": 4.0
+ },
+ "n_pc": 4760,
+ "net_charge": 0.0,
+ "residual_before_neutralisation": -35.786,
+ "outer_shell_charges": 1061,
+ "outer_shell_correction_e": 0.0337,
+ "min_pc_dist_A": 2.7656
+}

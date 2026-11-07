@@ -1,0 +1,104 @@
+{
+ "job": "U06_Nd_bulk4g2_ECPlevel_cecp",
+ "ion": "Nd",
+ "environment": "bulk",
+ "atom_1based": 2,
+ "R_A": 25,
+ "level": "def2-TZVP/def2-ECP, spin-free SA-CASSCF + AILFT",
+ "arm": "cecp",
+ "n_capped": 19,
+ "capped": [
+  [
+   "Nd",
+   3.541
+  ],
+  [
+   "Nd",
+   3.768
+  ],
+  [
+   "Nd",
+   3.768
+  ],
+  [
+   "Fe",
+   3.056
+  ],
+  [
+   "Fe",
+   3.056
+  ],
+  [
+   "Fe",
+   3.056
+  ],
+  [
+   "Fe",
+   3.056
+  ],
+  [
+   "Fe",
+   3.265
+  ],
+  [
+   "Fe",
+   3.265
+  ],
+  [
+   "Fe",
+   3.265
+  ],
+  [
+   "Fe",
+   3.265
+  ],
+  [
+   "Fe",
+   3.281
+  ],
+  [
+   "Fe",
+   3.281
+  ],
+  [
+   "Fe",
+   3.281
+  ],
+  [
+   "Fe",
+   3.281
+  ],
+  [
+   "Fe",
+   3.123
+  ],
+  [
+   "Fe",
+   3.123
+  ],
+  [
+   "Fe",
+   3.368
+  ],
+  [
+   "Fe",
+   3.368
+  ]
+ ],
+ "center_A": [
+  3.12667013,
+  3.12667013,
+  6.06497448
+ ],
+ "charges": {
+  "RE": 3.0,
+  "Fe": -0.214286,
+  "B": -3.0
+ },
+ "n_pc": 4749,
+ "net_charge": -0.0,
+ "residual_before_neutralisation": 79.714,
+ "outer_shell_charges": 1046,
+ "outer_shell_correction_e": -0.0762,
+ "min_pc_dist_A": 2.8942
+}

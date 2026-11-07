@@ -1,0 +1,24 @@
+# STEP1 : Nd3+ in neutral spherical point-charge field, reads step0.gbw
+! DKH2 RIJCOSX SARC2-DKH-QZVP AutoAux CASSCF MORead
+%moinp "step0.gbw"
+%maxcore 14000
+%pal nprocs 16 end
+%pointcharges "sphere.pc"
+%scf maxiter 800 end
+%casscf
+  ActConstraints 1
+  nel  3
+  norb 7
+  mult 4
+  nroots 35
+  maxiter 800
+  orbstep    SuperCI
+  switchstep DIIS
+  shiftup 1.0
+  shiftdn 1.0
+  minshift 0.2
+  actorbs forbs
+end
+* xyz 3 4
+Nd   3.12667013 3.12667013 6.06497448
+*

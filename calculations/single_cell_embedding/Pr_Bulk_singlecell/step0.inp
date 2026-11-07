@@ -1,0 +1,21 @@
+# STEP0 : FREE Pr3+ ion, NO point charges
+! DKH2 SARC2-DKH-QZVP AutoAux CASSCF
+%maxcore 14000
+%pal nprocs 16 end
+%scf maxiter 1000 end
+%casscf
+  nel  2
+  norb 7
+  mult 3
+  nroots 21
+  maxiter 300
+  orbstep SuperCI
+  switchstep NR
+  shiftup 1.0
+  shiftdn 1.0
+  minshift 0.2
+  actorbs forbs
+end
+* xyz 3 3
+Pr   0.00000000  0.00000000  0.00000000
+*

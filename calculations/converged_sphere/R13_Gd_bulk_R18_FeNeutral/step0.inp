@@ -1,0 +1,21 @@
+# STEP0 : free Gd3+ ion, no point charges -> clean atomic 4f
+! DKH2 SARC2-DKH-QZVP AutoAux CASSCF
+%maxcore 14000
+%pal nprocs 16 end
+%scf maxiter 1000 end
+%casscf
+  nel  7
+  norb 7
+  mult 8
+  nroots 1
+  maxiter 300
+  orbstep SuperCI
+  switchstep NR
+  shiftup 1.0
+  shiftdn 1.0
+  minshift 0.2
+  actorbs forbs
+end
+* xyz 3 8
+Gd   0.0 0.0 0.0
+*

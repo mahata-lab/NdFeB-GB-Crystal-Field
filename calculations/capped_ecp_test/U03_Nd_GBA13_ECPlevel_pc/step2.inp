@@ -1,0 +1,23 @@
+# STEP2 : spin-free SA-CASSCF + AILFT
+! RIJCOSX def2-TZVP AutoAux CASSCF MORead
+%moinp "step1.gbw"
+%maxcore 3000
+%pal nprocs 12 end
+%pointcharges "sphere.pc"
+%casscf
+  ActConstraints 1
+  nel  3
+  norb 7
+  mult 4,2
+  nroots 35,112
+  maxiter 200
+  orbstep SuperCI
+  switchstep DIIS
+  shiftup 0.5
+  shiftdn 0.5
+  minshift 0.1
+  actorbs forbs
+end
+* xyz 3 4
+Nd   2.16993203 6.60607197 12.08394074
+*

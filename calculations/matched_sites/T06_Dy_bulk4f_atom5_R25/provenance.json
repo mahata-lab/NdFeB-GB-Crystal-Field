@@ -1,0 +1,24 @@
+{
+ "job": "T06_Dy_bulk4f_atom5_R25",
+ "ion": "Dy",
+ "environment": "bulk",
+ "atom_1based": 5,
+ "R_A": 25,
+ "level": "DKH2/SARC2-DKH-QZVP, SA-CASSCF + QDPT-SOC + AILFT",
+ "center_A": [
+  6.40510914,
+  6.40510914,
+  0.0
+ ],
+ "charges": {
+  "RE": 3.0,
+  "Fe": -0.214286,
+  "B": -3.0
+ },
+ "n_pc": 4766,
+ "net_charge": -0.0,
+ "residual_before_neutralisation": 14.571,
+ "outer_shell_charges": 1048,
+ "outer_shell_correction_e": -0.0139,
+ "min_pc_dist_A": 3.0422
+}

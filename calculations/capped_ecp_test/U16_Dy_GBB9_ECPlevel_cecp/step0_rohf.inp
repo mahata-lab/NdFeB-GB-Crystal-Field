@@ -1,0 +1,40 @@
+# STEP0 : guess = ion + uncharged capped-ECP centres (same atom list as step1/2, no point charges); Dy3+ ion, def2-TZVP/def2-ECP
+! RIJCOSX def2-TZVP AutoAux CASSCF MORead
+%moinp "step0a.gbw"
+%maxcore 3000
+%pal nprocs 12 end
+%casscf
+  ActConstraints 1
+  nel  9
+  norb 7
+  mult 6
+  nroots 21
+  maxiter 300
+  orbstep SuperCI
+  switchstep DIIS
+  shiftup 1.0
+  shiftdn 1.0
+  minshift 0.2
+  actorbs forbs
+end
+* xyz 3 6
+Dy   7.41957861 7.41957861 12.17172751
+Fe>   0.000000      6.764914     4.586460    10.748417  NewECP "HayWadt" end
+Fe>   0.000000      4.586460     6.764914    10.748417  NewECP "HayWadt" end
+Fe>   0.000000      8.658327     5.647269     9.946296  NewECP "HayWadt" end
+Fe>   0.000000      5.647269     8.658327     9.946296  NewECP "HayWadt" end
+Fe>   0.000000      7.938846     7.938846     9.452210  NewECP "HayWadt" end
+Fe>   0.000000      6.171497     6.171497     9.053903  NewECP "HayWadt" end
+Fe>   0.000000      6.789652     4.910376    13.654755  NewECP "HayWadt" end
+Fe>   0.000000      4.910376     6.789652    13.654755  NewECP "HayWadt" end
+Fe>   0.000000      7.151769     7.151769    15.199426  NewECP "HayWadt" end
+Nd>   0.000000      6.606072    10.945936    12.083941  NewECP "def2-ECP" end
+Fe>   0.000000      5.624998     9.076688    14.260161  NewECP "HayWadt" end
+Fe>   0.000000      7.926416     9.625592    14.605653  NewECP "HayWadt" end
+Fe>   0.000000      4.388002     8.776004    12.143035  NewECP "HayWadt" end
+Nd>   0.000000     10.945936     6.606072    12.083941  NewECP "def2-ECP" end
+Fe>   0.000000      9.076688     5.624998    14.260161  NewECP "HayWadt" end
+Fe>   0.000000      9.625592     7.926416    14.605653  NewECP "HayWadt" end
+Fe>   0.000000      8.776004     4.388002    12.143035  NewECP "HayWadt" end
+Nd>   0.000000     10.132429    10.132429    12.171728  NewECP "def2-ECP" end
+*

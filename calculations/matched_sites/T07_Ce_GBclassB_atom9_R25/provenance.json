@@ -1,0 +1,24 @@
+{
+ "job": "T07_Ce_GBclassB_atom9_R25",
+ "ion": "Ce",
+ "environment": "GB",
+ "atom_1based": 9,
+ "R_A": 25,
+ "level": "DKH2/SARC2-DKH-QZVP, SA-CASSCF + QDPT-SOC + AILFT",
+ "center_A": [
+  7.41957861,
+  7.41957861,
+  12.17172751
+ ],
+ "charges": {
+  "RE": 3.0,
+  "Fe": -0.214286,
+  "B": -3.0
+ },
+ "n_pc": 4754,
+ "net_charge": 0.0,
+ "residual_before_neutralisation": 50.357,
+ "outer_shell_charges": 1061,
+ "outer_shell_correction_e": -0.0475,
+ "min_pc_dist_A": 2.7522
+}

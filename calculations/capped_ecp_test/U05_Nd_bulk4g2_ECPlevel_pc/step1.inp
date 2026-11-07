@@ -1,0 +1,23 @@
+# STEP1 : Nd3+ in field
+! RIJCOSX def2-TZVP AutoAux CASSCF MORead
+%moinp "step0.gbw"
+%maxcore 3000
+%pal nprocs 12 end
+%pointcharges "sphere.pc"
+%casscf
+  ActConstraints 1
+  nel  3
+  norb 7
+  mult 4
+  nroots 35
+  maxiter 800
+  orbstep SuperCI
+  switchstep DIIS
+  shiftup 1.0
+  shiftdn 1.0
+  minshift 0.2
+  actorbs forbs
+end
+* xyz 3 4
+Nd   3.12667013 3.12667013 6.06497448
+*
