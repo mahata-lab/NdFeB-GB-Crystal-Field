@@ -1,0 +1,24 @@
+{
+ "job": "N02_Nd_GB_atom13_NEVPT2",
+ "ion": "Nd",
+ "environment": "GB",
+ "atom_1based": 13,
+ "center_A": [
+  2.1699320291920876,
+  6.606071970807913,
+  12.083940737345536
+ ],
+ "embedding": "original",
+ "basis": "SARC2-DKH-QZVP",
+ "nevpt2": true,
+ "n_pc": 135,
+ "net_charge": 21.0,
+ "min_pc_dist": 2.7656,
+ "max_pc_dist": 14.138,
+ "charged_dipole_eA": [
+  53.23,
+  -53.23,
+  -71.3
+ ],
+ "purpose": "Methods: SC-NEVPT2 on published embedding"
+}

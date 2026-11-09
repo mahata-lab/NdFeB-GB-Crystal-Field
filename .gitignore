@@ -1,4 +1,4 @@
-# ORCA run products (not part of the repository)
+# ORCA products; selected source outputs are supplied losslessly as .out.gz
 *.gbw
 *.tmp
 *.densities*
@@ -8,3 +8,13 @@
 *.engrad
 rotate.txt
 __pycache__/
+*.py[cod]
+build/
+.venv/
+.DS_Store
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz

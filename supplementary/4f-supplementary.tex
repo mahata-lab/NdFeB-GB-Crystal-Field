@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{booktabs,longtable,float}
+\usepackage{caption}
+\usepackage{needspace}
+\captionsetup{font=small,labelfont=bf}
+\graphicspath{{../figures/}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thesection}{S\arabic{section}}
+\newcommand{\Atwo}{\ensuremath{A_2^0\langle r^2\rangle}}
+\newcommand{\ndfeb}{\mathrm{Nd_2Fe_{14}B}}
+\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\Large\bfseries Supplementary Material}\\[6pt]
+{\large Grain-Boundary Environments Reorient the Local $4f$ Susceptibility Axis and Split Light from Heavy Lanthanides in $\ndfeb$}\\[6pt]
+Avik Mahata and M. Zakotnik
+\end{center}
+
+\section{Structures and embedding definitions}
+Tables~\ref{tab:S1} and \ref{tab:S2} give every atom and the lattice vectors of the relaxed 68-atom bulk and 136-atom interface cells. The accompanying \texttt{bulk\_CONTCAR} and \texttt{GB\_CONTCAR} contain the same structures. Table~\ref{tab:S3} lists the rare-earth coordination. The upper half of the interface cell obeys $(x,y,z)\mapsto(-y,x,z+1/2)$ modulo lattice translations, without an additional in-plane translation. The $90^\circ$ rotation is symmetry equivalent at the tetragonal orientation level. The model is a coherent rotational-registry interface, not a representative general high-angle boundary.
+
+The finite-cell calculations in the main figures use bulk atom~2 ($4g$) and interface atom~13 (class A, $4f$ parent). The remaining atoms of one cell carry rare-earth $+3$, Fe 0, and B $-3$ charges. There are 67 and 135 entries, with charge sums $+9e$ and $+21e$, respectively. The quantum ion has charge $+3e$; it is not a point-charge entry. A point-charge sum is therefore a property of the embedding, and is not by itself a validation or invalidation of its local potential. The finite-cell prescription does not reproduce a charge-neutral periodic Madelung potential by construction.
+
+The extended-sphere sensitivity model uses periodic images of the same structures within 18 or 25~\AA{} of the ion, with rare-earth $+3$, Fe $-3/14$, and B $-3$. The residual embedding charge is spread equally over the charges in the outermost 2~\AA{} shell. For example, the 25~\AA{} arrays for Nd at bulk atom~2 and interface atom~13 contain 4768 and 4760 entries; the printed arrays are neutral to their rounding precision. This model changes the Fe charge assignment as well as the truncation geometry and size. Only the comparison of 18 and 25~\AA{} within this prescription is a radius-sensitivity test. An alternative neutral partition uses Fe $-5/14$ and B $-1$. The matched pairs are A (atom~13) versus bulk $4f$ (atom~5), and B (atom~9) versus bulk $4g$ (atom~2). Finite-cell and sphere-model results are labeled separately throughout.
+
+\section{Orbital and magnetic descriptors}
+The active spaces, state-average roots and weights, relativistic basis and SOC treatment are specified in the main Methods. The finite-cell calculations use SA-CASSCF; the separate SC-NEVPT2 results are labeled in Table~\ref{tab:S6}. The one-electron AILFT energies $\epsilon_i$ yield the total orbital spread and the orbital gaps $\delta_{\mathrm{orb}}=\epsilon_2-\epsilon_1$ and $\Delta_{\mathrm{orb}}=\epsilon_3-\epsilon_2$. Magnetic excitations instead come from the many-electron QDPT-SOC eigenvalues (Table~\ref{tab:S4}). For Pr and Tb, the table distinguishes the splitting within the lowest pair from the next level; a quasi-doublet need not be a protected degeneracy. The half-filled Gd ground multiplet is weakly split, despite a substantial one-electron orbital spread.
+
+The AILFT matrix is decomposed exactly as $V=\sum_{kq}B^k_qC^k_q$ for $k=2,4,6$, using the angular-momentum matrices printed by ORCA to fix the real-$f$ basis convention. The coefficients satisfy $B^k_{-q}=(-1)^q\overline{B^k_q}$. We report $S_k=[\sum_q|B^k_q|^2/(2k+1)]^{1/2}$ and $\Atwo=B^2_0/2$ in the cell frame with $z\parallel c$. Table~\ref{tab:S5} supplies the finite-cell invariants and axial coefficient; \texttt{wybourne\_Bkq\_all\_runs.csv} supplies the complete complex coefficient sets for the archived calculations, including the additional embedding tests. This CSV is a separate supplementary data file, not an embedded table in the PDF. Figure~\ref{fig:S2} compares rank changes for the finite-cell and matched sphere-model comparisons. Rank decomposition is not a ligand-shell decomposition or a radial-density measurement.
+
+The susceptibility figure uses the tensor-trace response at zero static field, orientationally averaged as $\overline{\chi}_M T=T\,\mathrm{Tr}(\boldsymbol{\chi}_M)/3$. Molar normalization is per rare-earth ion. The main Fig.~3 directions are the eigenvectors of the largest eigenvalues of the directly computed zero-field tensors at 2~K. The Gd susceptibility-axis rotation is $87.08^\circ$ and is included in main Fig.~3; this is not an assignment of first-order orbital anisotropy. The susceptibility axes are evaluated directly from the saved output tensors. Only records with the explicit \texttt{\_bulk} and \texttt{\_GB} labels define the pair; auxiliary \texttt{\_casscf} records are excluded. The archived direction table is based on the principal direction of the printed \texttt{g(OZ/SOC)} contribution, not the full ground-doublet $g$ tensor. With the correct records, that direction indicator gives $87.01^\circ$, $87.34^\circ$, $87.67^\circ$, $87.26^\circ$, and $87.42^\circ$ for Ce, Pr, Nd, Tb, and Dy. The direct 2~K susceptibility directions used in main Fig.~3 differ by less than $0.04^\circ$ from these indicators; the two definitions are not equated. The susceptibility tensor defines the actual linear magnetic response at the stated temperature for both Kramers and non-Kramers ions, whereas the archived indicator uses only one contribution to an effective $g$ matrix. Figure~4 uses the trace of each printed zero-field $\chi_M T$ tensor, from the archived outputs; the separate scalar \texttt{d2E/dB2} column is not substituted for that trace. The orbital maps in main Fig.~5 use the archived orbital-27 cubes for bulk and interface Ce, Pr and Dy. The panel titles give the ion, environment (Bulk or GB), and MO27 file index; the axes have labeled 0.5~\AA{} intervals and 0.25~\AA{} minor ticks. The projected density is $P(a,b)=\int |\psi(a,b,c)|^2\,dc/N$, where $N=\int|\psi|^2d^3r$ is the numerical full-cube norm. All six panels use the common range $0\leq P\leq P_{\max}$, with $P_{\max}=7$~\AA$^{-2}$ and the square-root color coordinate $u=(P/P_{\max})^{1/2}$. The colorbar is labeled in physical $P$ values (\AA$^{-2}$), not in $u$. The same monotonic mapping is applied to every panel to make weak lobes visible; there is no independent panel normalization, density clipping, or change to the integrals and radii. This is a display transformation, not a replacement of the density by an orbital amplitude. Thin black contours outline the projected-density lobes at 0.25, 0.75, and 2.0~\AA$^{-2}$ in every panel. They are isodensity contours, not coordination boundaries. Bicubic interpolation is used only to display the contours; the cube integrals and radii use the original three-dimensional grid. The extent is $r_{\mathrm{rms}}=[\int r^2|\psi|^2d^3r/N]^{1/2}$, measured from the ion using all three-dimensional voxels. The uncorrected grid norms differ from one by less than 0.9\% (Table~\ref{tab:S10}); each density is normalized with its own $N$ before comparison. Projecting the full density avoids an arbitrary slice through an orbital nodal plane. The selected individual eigenorbital is not the many-electron ground-state density, and its angular form can change under mixing of nearly degenerate orbitals. Its extent does not by itself establish a causal radial mechanism for the crystal-field crossover.
+
+\section{Embedding and site sensitivity}
+Figure~\ref{fig:S1} and Tables~\ref{tab:S6} and \ref{tab:S7} distinguish finite-cell versus sphere-model changes, the radius test within the sphere model, and matched-site comparisons. The selected-site finite-cell sign crossover is not retained in the matched 25~\AA{} sphere calculations. The sphere model yields a class A increase of the axial term and a smaller class B response, but this does not demonstrate that this charge assignment is uniquely correct. At the tested Nd and Dy sites, changing sphere radius modifies axial parameters by about 5--8\%; changing Fe/B charge partition can modify them by 33--78\%. The 13--14\% change of the ratio of interface atom~13 to bulk atom~2 is not an uncertainty bound on the different matched-sublattice ratios.
+
+The cECP tests in Table~\ref{tab:S8} compare core-repulsion potentials with bare charges at the same def2-TZVP/central-ion-ECP level, using spin-free SA-CASSCF. Every Fe and rare-earth neighbor within 4.0~\AA{} carries its formal charge and, in the capped arm, an embedding ECP but no basis functions. The capped and bare-charge arms differ only by these potentials. Their small differences do not test explicit Fe--$4f$ hybridization, conduction-electron screening, or alternative interface structures. They also do not validate the separate finite-cell charge convention.
+
+\section{Active-space checks and magnetic directions}
+The Ce $4f$-parent sphere calculations did not retain seven $f$ active orbitals: one active orbital acquired $6s$ character. A CASCI on free-ion orbitals did not agree adequately with SA-CASSCF where both were available, so the missing Ce class A entries are omitted. This is an active-space limitation, not a calculation of Ce valence in the solid.
+
+For the sphere-model Kramers ions Ce, Nd and Dy, the direction in Table~\ref{tab:S7} is taken directly from the ground-doublet matrix elements of $\mathbf L+g_e\mathbf S$. Directions for the non-Kramers ions Pr and Tb are not assigned in that table because direct temperature-dependent susceptibility tensors were not saved for these sphere calculations. No Gd orbital easy axis is assigned. The main finite-cell directions instead use the saved direct susceptibility tensors for all six ions, with Gd reported as a susceptibility response direction. No fitted ligand-field CI reconstruction is used for the main susceptibility curves, magnetic directions, or orbital-density figure.
+
+\section{Conditional switching-field estimate}
+For a single uniaxial coherent-rotation region, $E=K\sin^2\phi-\mu_0M_s H\cos(\phi-\theta)$ yields the Stoner--Wohlfarth loss-of-metastability field $H_{\mathrm{sw}}/H_A=(|\cos\theta|^{2/3}+|\sin\theta|^{2/3})^{-3/2}$, with $H_A=2K/(\mu_0 M_s)$. Table~\ref{tab:S9} evaluates this dimensionless expression for the finite-cell susceptibility-axis angles, assuming the applied field is along the bulk response axis. The result is not the hysteretic coercivity along a hard direction, and it is not a spatially resolved nucleation calculation. It omits exchange between the region and host, demagnetizing fields, changes of $K$ or $M_s$, and nonuniform reversal. No value of $K$ is inferred from the orbital-energy spread, and no absolute coercive field is assigned.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Figure_S1.pdf}
+\caption{Embedding and site comparisons. (a) Axial parameter at interface atom~13 and (b) one-electron orbital-energy spread for Nd and Dy in the finite-cell model and the 18 and 25~\AA{} sphere models. The first step changes charge assignment as well as truncation; the second step tests radius within one charge convention. (c) Orbital-spread ratios and (d) axial-parameter ratios for matched pairs in the 25~\AA{} sphere model. The Ce class A pair is absent because the active-space optimization was unstable. Lines guide the eye.}\label{fig:S1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Figure_S2.pdf}
+\caption{Relative changes of exact rank invariants $S_k$ ($k=2,4,6$). (a) Finite-cell selected-site comparison, bulk atom~2 versus interface atom~13; (b) matched class A versus bulk $4f$ and (c) matched class B versus bulk $4g$ in the 25~\AA{} sphere model. The different patterns show that the finite-cell sign crossover cannot be treated as an embedding-independent geometric effect. The decomposition does not isolate radial contraction.}\label{fig:S2}
+\end{figure}
+
+\clearpage
+\input{si_tables}
+\end{document}

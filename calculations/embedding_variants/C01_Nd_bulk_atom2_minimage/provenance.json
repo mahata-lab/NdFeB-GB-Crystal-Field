@@ -1,0 +1,24 @@
+{
+ "job": "C01_Nd_bulk_atom2_minimage",
+ "ion": "Nd",
+ "environment": "bulk",
+ "atom_1based": 2,
+ "center_A": [
+  3.126670125106339,
+  3.126670125106339,
+  6.064974480607277
+ ],
+ "embedding": "minimage",
+ "basis": "SARC2-DKH-QZVP",
+ "nevpt2": false,
+ "n_pc": 79,
+ "net_charge": 9.0,
+ "min_pc_dist": 2.8942,
+ "max_pc_dist": 7.712,
+ "charged_dipole_eA": [
+  28.16,
+  28.16,
+  -0.0
+ ],
+ "purpose": "R1: wrapping only (same 67 charges) vs published unwrapped cell"
+}

@@ -1,167 +1,241 @@
-#!/usr/bin/env python3
-"""make_figures.py - Figures 2-5 of the revised manuscript from the analysis tables.
+from pathlib import Path
+import csv, json, math, shutil, gzip, sys, argparse
+import numpy as np
+from PIL import Image
+from contour_overlay import draw_contours, CONTOUR_LEVELS
+from reportlab.pdfgen import canvas
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.lib.colors import HexColor, Color, white
+from reportlab.lib.utils import ImageReader
+import pypdfium2 as pdfium
 
-python3 make_figures.py <analysis_dir> <out_dir>
-needs: tables/cf_all_runs.csv, tables/easy_axis_lfci.csv, parsed/*.json (for multiplets and 4f densities)
-Colours: validated categorical slots (bulk #2a78d6, GB class A #eb6834, GB class B #1baf7a); marker shape is
-a second encoding for every series. Ranks k = 2,4,6 use one sequential blue ramp."""
-import sys, os, json, math
-import numpy as np, pandas as pd
-import matplotlib; matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-from matplotlib.ticker import MaxNLocator
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import cflib as c
+ROOT=Path(__file__).resolve().parents[2]
+parser=argparse.ArgumentParser(description='Generate current figures from a reproduced analysis directory and included orbital cubes.')
+parser.add_argument('analysis_dir',type=Path)
+parser.add_argument('output_dir',type=Path)
+args=parser.parse_args()
+AN=args.analysis_dir.resolve()
+OUT=args.output_dir.resolve()
+OUT.mkdir(parents=True,exist_ok=True)
+(AN/'figures').mkdir(parents=True,exist_ok=True)
+(AN/'tables').mkdir(parents=True,exist_ok=True)
+regular=Path('C:/Windows/Fonts/cambria.ttc')
+bold=Path('C:/Windows/Fonts/cambriab.ttf')
+if not regular.exists():
+    from matplotlib.font_manager import FontProperties, findfont
+    regular=Path(findfont(FontProperties(family='DejaVu Serif')))
+    bold=Path(findfont(FontProperties(family='DejaVu Serif',weight='bold')))
 
-AN, OUT = sys.argv[1], sys.argv[2]; os.makedirs(OUT, exist_ok=True)
-plt.rcParams.update({'font.family': 'serif', 'font.serif': ['STIXGeneral', 'DejaVu Serif'], 'mathtext.fontset': 'stix',
-                     'font.size': 9, 'axes.labelsize': 9.5, 'axes.titlesize': 9.5, 'legend.fontsize': 8, 'xtick.labelsize': 8.5,
-                     'ytick.labelsize': 8.5, 'axes.linewidth': 0.8, 'axes.spines.top': False, 'axes.spines.right': False,
-                     'savefig.dpi': 400, 'figure.dpi': 120})
-BULK, GA, GBB, NEU = '#2a78d6', '#eb6834', '#1baf7a', '#8c8b86'
-INK, INK2, GRID = '#0b0b0b', '#52514e', '#e4e3df'
-IONS = ['Ce', 'Pr', 'Nd', 'Gd', 'Tb', 'Dy']
-d = pd.read_csv(os.path.join(AN, 'tables/cf_all_runs.csv')); d = d[d.block == 'CASSCF'].set_index('run')
-ez = pd.read_csv(os.path.join(AN, 'tables/easy_axis_lfci.csv')).set_index('run')
+pdfmetrics.registerFont(TTFont('A',str(regular)))
+pdfmetrics.registerFont(TTFont('AB',str(bold)))
+GRAY='#60666D';RED='#C7352A';BLUE='#2573A6';GREEN='#16806A';INK='#202124';LIGHT='#D9DDE1'
+IONS=['Ce','Pr','Nd','Gd','Tb','Dy']
+R={r['run']:r for r in csv.DictReader(open(AN/'tables/cf_all_runs.csv')) if r['block']=='CASSCF'}
+R.update({r['run']:r for r in csv.DictReader(open(AN/'tables/finite_cell_descriptors.csv'))})
+CHI=list(csv.DictReader(open(AN/'tables/finite_cell_chiT.csv')))
+MAG=list(csv.DictReader(open(AN/'tables/finite_cell_susceptibility_tensors.csv')))
+f=lambda run,key:float(R[run][key])
 
-BULK2 = {i: 'R%02d_%s_bulk_R25_FeNeutral' % (n, i) for i, n in zip(IONS, (2, 6, 10, 14, 18, 22))}
-GB13 = {i: 'R%02d_%s_GB_R25_FeNeutral' % (n, i) for i, n in zip(IONS, (4, 8, 12, 16, 20, 24))}
-BULK5 = {i: 'T%02d_%s_bulk4f_atom5_R25' % (n, i) for i, n in zip(IONS, range(1, 7))}
-GB9 = {i: 'T%02d_%s_GBclassB_atom9_R25' % (n, i) for i, n in zip(IONS, range(7, 13))}
-PAIR_A = {i: (BULK5[i], GB13[i]) for i in IONS if i != 'Ce'}          # Ce: 4f-parent sites not obtainable
-PAIR_B = {i: (BULK2[i], GB9[i]) for i in IONS}
+def txt(c,x,y,s,size=8,font='A',color=INK,align='left'):
+    c.setFillColor(HexColor(color));c.setFont(font,size)
+    getattr(c,{'left':'drawString','center':'drawCentredString','right':'drawRightString'}[align])(x,y,s)
+def start(name,w,h):
+    c=canvas.Canvas(str(AN/'figures'/f'{name}.pdf'),pagesize=(w,h));c.setTitle(name);return c
+def finish(c,name):
+    c.save();p=AN/'figures'/f'{name}.pdf';doc=pdfium.PdfDocument(p)
+    doc[0].render(scale=3).to_pil().save(AN/'figures'/f'{name}.png')
+    for ext in ['pdf','png']:shutil.copy2(AN/'figures'/f'{name}.{ext}',OUT/f'{name}.{ext}')
+def axes(c,x,y,w,h,xlim,ylim,xticks,yticks,xlab='',ylab='',tag='',title=''):
+    c.setStrokeColor(HexColor(GRAY));c.setLineWidth(.6);c.line(x,y,x+w,y);c.line(x,y,x,y+h)
+    xx=lambda z:x+(z-xlim[0])/(xlim[1]-xlim[0])*w
+    yy=lambda z:y+(z-ylim[0])/(ylim[1]-ylim[0])*h
+    for v,lab in xticks:
+        c.line(xx(v),y,xx(v),y-3);txt(c,xx(v),y-13,str(lab),7.5,align='center')
+    for v,lab in yticks:
+        c.line(x-3,yy(v),x,yy(v));txt(c,x-6,yy(v)-2.5,str(lab),7.5,align='right')
+    if xlab:txt(c,x+w/2,y-29,xlab,8.3,align='center')
+    if ylab:
+        c.saveState();c.translate(x-35,y+h/2);c.rotate(90);txt(c,0,0,ylab,8.3,align='center');c.restoreState()
+    if tag:txt(c,x+5,y+h-14,tag,9.5,'AB')
+    if title:txt(c,x+w/2,y+h+9,title,9,'AB',align='center')
+    return xx,yy
+def line(c,pts,col=GRAY,dash=None,width=1.1):
+    c.setStrokeColor(HexColor(col));c.setLineWidth(width);c.setDash(dash or [])
+    p=c.beginPath();p.moveTo(*pts[0])
+    for a in pts[1:]:p.lineTo(*a)
+    c.drawPath(p);c.setDash([])
+def marker(c,x,y,col,open=False,r=2):
+    c.setStrokeColor(HexColor(col));c.setFillColor(white if open else HexColor(col));c.setLineWidth(.8);c.circle(x,y,r,stroke=1,fill=1)
+def legend(c,x,y,s,col,open=False):
+    line(c,[(x,y),(x+14,y)],col);marker(c,x+7,y,col,open);txt(c,x+20,y-2.5,s,7.5)
 
+# Keep the original structure illustration without changing its geometry.
+shutil.copy2(ROOT/'figures/Figure_1.png',OUT/'Figure_1.png')
 
-def label(ax, s):
-    ax.text(-0.02, 1.02, s, transform=ax.transAxes, ha='right', va='bottom', fontsize=10.5, fontweight='bold', color=INK)
+# Original AILFT observable, re-plotted from the archived energies rather than fallback constants.
+c=start('Figure_2',504,399)
+bulk=[f('FINITE_'+i+'_bulk','split') for i in IONS];gb=[f('FINITE_'+i+'_GB','split') for i in IONS]
+xx,yy=axes(c,49,238,177,130,(-.6,5.6),(0,3400),list(enumerate(IONS)),[(i,str(i)) for i in [0,1000,2000,3000]],ylab='4f orbital-energy spread (cm⁻¹)',tag='(a)')
+for k,(a,b) in enumerate(zip(bulk,gb)):
+    for dx,v,col in [(-.17,a,GRAY),(.17,b,RED)]:
+        c.setFillColor(HexColor(col));c.rect(xx(k+dx)-3.7,yy(0),7.4,yy(v)-yy(0),fill=1,stroke=0)
+    txt(c,xx(k),yy(max(a,b))+6,f'{100*(b/a-1):+.0f}%',7,align='center')
+legend(c,80,382,'bulk',GRAY);legend(c,141,382,'GB',RED)
+xx,yy=axes(c,307,238,177,130,(-.6,5.6),(.55,1.4),list(enumerate(IONS)),[(v,str(v)) for v in [.6,.8,1,1.2,1.4]],ylab='GB / bulk orbital-energy spread',tag='(b)')
+line(c,[(xx(-.6),yy(1)),(xx(5.6),yy(1))],GRAY,[3,3],.6)
+vals=[b/a for a,b in zip(bulk,gb)];line(c,[(xx(k),yy(v)) for k,v in enumerate(vals)],INK)
+for k,v in enumerate(vals):marker(c,xx(k),yy(v),RED if v<1 else BLUE)
+for k,ion in enumerate(['Ce','Dy']):
+    x=49+258*k; mx=2200 if ion=='Ce' else 700
+    ticks=[0,500,1000,1500,2000] if ion=='Ce' else [0,200,400,600]
+    xx,yy=axes(c,x,49,177,128,(-.6,1.7),(0,mx),[(0,'bulk'),(1,'GB')],[(v,str(v)) for v in ticks],ylab='Orbital energy above lowest (cm⁻¹)',tag='(c)' if k==0 else '(d)',title=ion+'³⁺  one-electron levels')
+    for j,env,col in [(0,'bulk',GRAY),(1,'GB',RED)]:
+        d=json.loads((AN/'parsed'/f'FINITE_{ion}_{env}.json').read_text())
+        E=d['ailft']['CASSCF']['E'][:3]
+        for ev in E:line(c,[(xx(j)-19,yy(ev)),(xx(j)+19,yy(ev))],col,width=1.8)
+        txt(c,xx(j)+24,yy(E[1])+3,f'δ = {E[1]:.0f}',6.8,color=col)
+        txt(c,xx(j),yy(E[2])+5,f'Δ = {E[2]-E[1]:.0f}',7,color=col,align='center')
+finish(c,'Figure_2')
 
+# Magnetic directions from the actual zero-field susceptibility tensors of the same finite model.
+c=start('Figure_3',504,215)
+txt(c,17,195,'(a)',9.5,'AB');txt(c,117,195,'Local single-ion response',9,'AB',align='center')
+c.setFillColor(HexColor('#F2F4F6'));c.setStrokeColor(HexColor(LIGHT));c.ellipse(23,36,210,88,stroke=1,fill=1)
+line(c,[(116,61),(116,171)],GRAY,width=2)
+line(c,[(116,171),(112,162)],GRAY,width=1.6);line(c,[(116,171),(120,162)],GRAY,width=1.6)
+line(c,[(116,61),(200,66)],RED,width=2)
+line(c,[(200,66),(192,70)],RED,width=1.6);line(c,[(200,66),(191,62)],RED,width=1.6)
+txt(c,123,157,'bulk ≈ c',8,color=GRAY);txt(c,154,80,'GB',8,color=RED)
+txt(c,127,108,'≈ 87°',10,'AB');txt(c,126,31,'basal plane',8,color=GRAY)
+txt(c,117,11,'Finite-cell embedding',8,align='center')
+xx,yy=axes(c,285,49,201,127,(-.6,5.6),(0,110),list(enumerate(IONS)),[(v,str(v)) for v in [0,30,60,90]],ylab='Bulk–GB axis angle at 2 K (deg)',tag='(b)')
+for k,ion in enumerate(IONS):
+    if ion=='Gd':txt(c,xx(k),yy(13),'—',10,align='center');continue
+    v=float(next(r for r in MAG if r['ion']==ion)['bulk_GB_axis_angle_deg'])
+    c.setFillColor(HexColor(RED if k<3 else BLUE));c.rect(xx(k)-8,yy(0),16,yy(v)-yy(0),fill=1,stroke=0)
+    txt(c,xx(k),yy(v)+4,f'{v:.1f}°',7,align='center')
+txt(c,383,11,'Gd: no orbital easy-axis assignment',7,align='center')
+finish(c,'Figure_3')
 
-def style(ax):
-    ax.grid(axis='y', color=GRID, lw=0.6); ax.set_axisbelow(True)
-    ax.tick_params(colors=INK2, length=3); [s.set_color(INK2) for s in ax.spines.values()]
+# Six original susceptibility panels, now uniformly lettered at upper left.
+c=start('Figure_4',504,323)
+curie=[.8035714286,1.6,1.6363636364,7.875,11.8125,14.1666666667]
+limits=[(.36,.86),(.1,1.75),(1.18,1.72),(7.38,7.94),(9.8,12.1),(11.9,14.45)]
+ticks=[[.4,.6,.8],[.25,.75,1.25,1.75],[1.2,1.4,1.6],[7.4,7.6,7.8],[10,11,12],[12,13,14]]
+for k,ion in enumerate(IONS):
+    x=46+(k%3)*167;y=191-(k//3)*150
+    xx,yy=axes(c,x,y,115,104,(0,40),limits[k],[(v,str(v)) for v in [0,10,20,30,40]],[(v,str(v)) for v in ticks[k]],xlab='Temperature (K)' if k>=3 else '',ylab='χM T (cm³ K mol⁻¹)' if k%3==0 else '',title=ion+'³⁺')
+    txt(c,x+4,y+113,f'({"abcdef"[k]})',9.5,'AB')
+    line(c,[(xx(0),yy(curie[k])),(xx(40),yy(curie[k]))],'#9AA0A6',[3,3],.7)
+    txt(c,xx(39),yy(curie[k])+3,'free ion',6.5,color='#8A9098',align='right')
+    for env,col,op in [('bulk',GRAY,True),('GB',RED,False)]:
+        data=[r for r in CHI if r['ion']==ion and r['environment']==env]
+        pts=[(xx(float(r['T_K'])),yy(float(r['chiT']))) for r in data];line(c,pts,col,None,.65)
+        for px,py in pts:marker(c,px,py,col,op,1.6)
+    if k==0:legend(c,x+50,y+64,'bulk',GRAY,True);legend(c,x+50,y+50,'GB',RED)
+finish(c,'Figure_4')
 
+# Figure 5: bulk/interface comparison on one absolute density scale, from the archived cubes.
+c=start('Figure_5',550,405);cube_meta=[];maps={};bohr=.5291772109
+for ion in ['Ce','Pr','Dy']:
+    for env in ['Bulk','GB']:
+        path=ROOT/'analysis/orbitals'/f'{ion}_{env}_mo27a.cube.gz'
+        with gzip.open(path,'rt') as h:
+            h.readline();h.readline();a=h.readline().split();nat=abs(int(a[0]));origin=np.array(a[1:4],float)
+            grid=[h.readline().split() for _ in range(3)];n=np.array([int(q[0]) for q in grid]);step=np.array([q[1:4] for q in grid],float)
+            atoms=[h.readline().split() for _ in range(nat)];center=np.array(atoms[0][2:5],float)
+            if int(a[0])<0:h.readline()
+            data=np.fromstring(h.read(),sep=' ').reshape(n)
+        coords=[origin[j]+np.arange(n[j])*step[j,j]-center[j] for j in range(3)]
+        rho=data**2;voxel=abs(np.linalg.det(step));norm=float(rho.sum()*voxel)
+        r2grid=sum(coords[j].reshape(tuple(n[j] if i==j else 1 for i in range(3)))**2 for j in range(3))
+        rms=float(np.sqrt((rho*r2grid).sum()*voxel/norm))*bohr
+        xyz=[z*bohr for z in coords]
+        keepx=np.where(abs(xyz[0])<=1.08)[0];keepy=np.where(abs(xyz[1])<=1.08)[0]
+        # Integrate the full density along c; a centred slice can be a nodal plane.
+        projection=(rho.sum(axis=2)*abs(step[2,2])/norm/bohr**2).T
+        density=projection[np.ix_(keepy,keepx)]
+        maps[(ion,env)]=(xyz[0][keepx],xyz[1][keepy],density,rms)
+        cube_meta.append(dict(ion=ion,environment=env,source=path.relative_to(ROOT).as_posix(),plane='Full orbital density projected along c onto a,b',grid_norm=norm,orbital_r_rms_A=rms,voxel_bohr3=voxel))
+vmax=math.ceil(max(v[2].max() for v in maps.values())*2)/2
+# Sequential white-to-blue palette; a single square-root display mapping for every panel.
+PALETTE=np.array([[255,255,255],[222,235,247],[198,219,239],[158,202,225],
+                  [107,174,214],[66,146,198],[33,113,181],[8,81,156],[8,48,107]])
+def density_rgb(density):
+    coordinate=np.sqrt(np.clip(np.asarray(density)/vmax,0,1))
+    return np.stack([np.interp(coordinate,np.linspace(0,1,len(PALETTE)),PALETTE[:,k]) for k in range(3)],axis=-1)
+assert all(v[2].min()>=0 and v[2].max()<=vmax for v in maps.values())
+txt(c,264,386,'Projected lowest-orbital density — shared square-root color scale',10,align='center')
+for j,ion in enumerate(['Ce','Pr','Dy']):
+    for row,env in enumerate(['Bulk','GB']):
+        xs,ys,density,rms=maps[(ion,env)]
+        # No separate panel normalization; only the shared density-to-color transfer changes.
+        rgb=density_rgb(density).clip(0,255).astype('uint8')
+        im=Image.fromarray(rgb[::-1]).resize((550,550),Image.Resampling.BICUBIC)
+        im.save(AN/'figures'/f'{ion}_{env}_orbital_density.png')
+        x=48+j*163;y=237-row*180;w=118;h=118
+        c.drawImage(ImageReader(im),x,y,w,h)
+        draw_contours(c,density,x,y,w,h)
+        ticks=[(v,f'{v:g}') for v in [-1,-.5,0,.5,1]]
+        xx,yy=axes(c,x,y,w,h,(xs[0],xs[-1]),(ys[0],ys[-1]),ticks,ticks,xlab='a direction (Å)' if row==1 else '',ylab=('Bulk' if row==0 else 'Boundary')+'   b (Å)' if j==0 else '',tag=f'({"abcdef"[row*3+j]})',title=f'{ion}³⁺  {env} MO27')
+        # Labeled 0.5-Angstrom intervals plus minor ticks every 0.25 Angstrom.
+        c.setStrokeColor(HexColor(GRAY));c.setLineWidth(.5)
+        for v in [-.75,-.25,.25,.75]:
+            c.line(xx(v),y,xx(v),y-1.8)
+            c.line(x-1.8,yy(v),x,yy(v))
+        txt(c,x+w/2,y-(29 if row==0 else 42),'orbital rᵣₘₛ = %.2f Å'%rms,8,align='center')
+# Continuous colorbar; its nonlinear tick positions are labelled with physical density.
+gradient=density_rgb(vmax*np.linspace(1,0,800)**2).astype('uint8')[:,None,:]
+c.drawImage(ImageReader(Image.fromarray(np.repeat(gradient,12,axis=1))),505,65,8,278)
+for value in [0,.25,1,2,4,vmax]:
+    py=65+278*np.sqrt(value/vmax)
+    c.setStrokeColor(HexColor(GRAY));c.setLineWidth(.5);c.line(513,py,516,py)
+    txt(c,519,py-2.5,f'{value:g}',7)
+c.saveState();c.translate(545,204);c.rotate(90);txt(c,0,0,'Projected density (Å⁻²)',8,align='center');c.restoreState()
+(AN/'tables/orbital_slice_provenance.json').write_text(json.dumps(dict(common_density_vmin_Aminus2=0,common_density_vmax_Aminus2=vmax,color_mapping='square root: u=(P/Pmax)^(1/2)',gamma=0.5,independent_panel_normalization=False,contour_levels_Aminus2=list(CONTOUR_LEVELS),contour_display_interpolation='bicubic',orbitals=cube_meta),indent=2),encoding='utf-8')
+with open(AN/'tables/orbital_extent.csv','w',newline='') as h:
+    ww=csv.DictWriter(h,fieldnames=['ion','environment','grid_norm','orbital_r_rms_A','source']);ww.writeheader();ww.writerows([{k:r[k] for k in ww.fieldnames} for r in cube_meta])
+finish(c,'Figure_5')
 
-def save(fig, name):
-    fig.savefig(os.path.join(OUT, name + '.png'), bbox_inches='tight', facecolor='white')
-    fig.savefig(os.path.join(OUT, name + '.pdf'), bbox_inches='tight', facecolor='white'); plt.close(fig)
+# S1: show original and extended embeddings explicitly; do not label a multi-change comparison a radius test.
+c=start('Figure_S1',504,396)
+for k,key,label,ylim,ticks in [(0,'A20r2','A₂⁰⟨r²⟩ at GB atom 13 (cm⁻¹)',(-1100,1300),[-1000,0,1000]),(1,'split','4f orbital-energy spread at GB (cm⁻¹)',(500,2100),[500,1000,1500,2000])]:
+    x=49+258*k;xx,yy=axes(c,x,237,177,128,(-.25,2.25),ylim,[(0,'finite cell'),(1,'18 Å'),(2,'25 Å')],[(v,str(v)) for v in ticks],ylab=label,tag=f'({"ab"[k]})')
+    if ylim[0]<0:line(c,[(xx(-.25),yy(0)),(xx(2.25),yy(0))],GRAY,[3,3],.6)
+    for ion,ns,col,op in [('Nd',[None,11,12],RED,False),('Dy',[None,23,24],BLUE,True)]:
+        vals=[f('FINITE_'+ion+'_GB',key)]+[f(f'R{n:02d}_{ion}_GB_R{18 if j==1 else 25}_FeNeutral',key) for j,n in enumerate(ns) if n]
+        line(c,[(xx(j),yy(v)) for j,v in enumerate(vals)],col)
+        for j,v in enumerate(vals):marker(c,xx(j),yy(v),col,op)
+    if k==0:legend(c,x+10,379,'Nd',RED);legend(c,x+83,379,'Dy',BLUE,True)
+for k,key,lab in [(0,'split','Matched GB / bulk orbital spread'),(1,'A20r2','Matched GB / bulk A₂⁰⟨r²⟩')]:
+    x=49+258*k;xx,yy=axes(c,x,51,177,126,(-.6,5.6),(.8,1.7),list(enumerate(IONS)),[(v,str(v)) for v in [.8,1,1.2,1.4,1.6]],ylab=lab,tag=f'({"cd"[k]})')
+    line(c,[(xx(-.6),yy(1)),(xx(5.6),yy(1))],GRAY,[3,3],.6)
+    for cls,col,op in [('A',RED,False),('B',GREEN,True)]:
+        pts=[]
+        for j,ion in enumerate(IONS):
+            if cls=='A' and ion=='Ce':continue
+            br=f'T{j+1:02d}_{ion}_bulk4f_atom5_R25' if cls=='A' else f'R{[2,6,10,14,18,22][j]:02d}_{ion}_bulk_R25_FeNeutral'
+            gr=f'R{[4,8,12,16,20,24][j]:02d}_{ion}_GB_R25_FeNeutral' if cls=='A' else f'T{j+7:02d}_{ion}_GBclassB_atom9_R25'
+            pts.append((xx(j),yy(f(gr,key)/f(br,key))))
+        line(c,pts,col)
+        for p in pts:marker(c,*p,col,op)
+    if k==0:legend(c,x,192,'A / bulk 4f',RED);legend(c,x+94,192,'B / bulk 4g',GREEN,True)
+finish(c,'Figure_S1')
 
-
-def ratio(pair, key):
-    return [d.loc[pair[i][1], key] / d.loc[pair[i][0], key] if i in pair else np.nan for i in IONS]
-
-
-x = np.arange(len(IONS))
-# ------------------------------------------------------------------ Figure 2
-fig = plt.figure(figsize=(7.0, 5.6))
-gs = fig.add_gridspec(2, 2, hspace=0.42, wspace=0.30)
-for k, (key, ylab) in enumerate((('split', 'GB / bulk, total 4$f$ splitting'), ('A20r2', r'GB / bulk, $A_2^0\langle r^2\rangle$'))):
-    ax = fig.add_subplot(gs[0, k]); style(ax)
-    ax.axhspan(0.86, 1.14, color='#f0efec', zorder=0, lw=0)
-    ax.axhline(1, color=INK2, lw=0.8, ls='--', zorder=1)
-    ax.plot(x, ratio(PAIR_A, key), '-o', color=GA, ms=6, lw=1.6, mec='white', mew=0.8, label='class A (4$f$ parent)', zorder=3)
-    ax.plot(x, ratio(PAIR_B, key), '-s', color=GBB, ms=6, lw=1.6, mec='white', mew=0.8, label='class B (4$g$ parent)', zorder=3)
-    ax.set_xticks(x, IONS); ax.set_ylabel(ylab); ax.set_ylim(0.8, 1.7)
-    ax.text(-0.25, 0.83, 'convergence uncertainty (±14%)', fontsize=7, color=INK2, ha='left', va='bottom')
-    if k == 0: ax.legend(loc='upper left', frameon=False, handlelength=1.6)
-    label(ax, '(a)' if k == 0 else '(b)')
-for k, ion in enumerate(('Nd', 'Dy')):
-    ax = fig.add_subplot(gs[1, k]); style(ax); ax.grid(False)
-    n = {'Nd': 10, 'Dy': 16}[ion]
-    for j, (run, col, xc, lab) in enumerate(((BULK5[ion], BULK, 0, 'bulk 4$f$'), (GB13[ion], GA, 1, 'GB class A'))):
-        lev = np.array(json.load(open(os.path.join(AN, 'parsed', run + '.json')))['soc'][0][:n])[::2]
-        for e in lev: ax.plot([xc - 0.32, xc + 0.32], [e, e], color=col, lw=2.0, solid_capstyle='round')
-        ax.annotate('', xy=(xc + 0.42, lev[1]), xytext=(xc + 0.42, lev[0]), arrowprops=dict(arrowstyle='<->', color=INK, lw=0.8, shrinkA=0, shrinkB=0))
-        ax.text(xc + 0.47, max(lev[1] / 2, 0.035 * lev[-1]), '$E_1$ = %.0f' % lev[1], fontsize=7.5, va='bottom' if lev[1] < 0.07 * lev[-1] else 'center', color=INK)
-        ax.text(xc, -0.07, lab, transform=ax.get_xaxis_transform(), ha='center', va='top', fontsize=8.5, color=INK)
-    ax.set_xlim(-0.6, 1.9); ax.set_xticks([]); ax.spines['bottom'].set_visible(False)
-    ax.set_ylabel('energy (cm$^{-1}$)'); ax.set_title(r'%s$^{3+}$, ground multiplet %s' % (ion, {'Nd': r'$^4I_{9/2}$', 'Dy': r'$^6H_{15/2}$'}[ion]), color=INK)
-    label(ax, '(c)' if k == 0 else '(d)')
-save(fig, 'Figure_2')
-
-# ------------------------------------------------------------------ Figure 3
-fig, axs = plt.subplots(1, 2, figsize=(7.0, 2.8), gridspec_kw=dict(wspace=0.32))
-ax = axs[0]; style(ax)
-aniso = [i for i in IONS if i != 'Gd']; xa = np.arange(len(aniso))
-KR = {'Ce', 'Nd', 'Dy'}            # Kramers ions: ab initio ground-doublet g axis; Tb: LF-CI chi axis; Pr (quasi-doublet) omitted
-def tilt(run, ion):
-    return d.loc[run, 'g_angle'] if ion in KR else ez.loc[run, 'easy_angle_deg']
-tA = [tilt(PAIR_A[i][1], i) if (i in PAIR_A and i != 'Pr') else np.nan for i in aniso]
-tB = [tilt(PAIR_B[i][1], i) if i != 'Pr' else np.nan for i in aniso]
-pub = {'Pr': 'PUB_Pr_GB', 'Nd': 'PUB_Nd_GB', 'Dy': 'PUB_Dy_GB'}
-tP = [ez.loc[pub[i], 'easy_angle_deg'] if i in pub else np.nan for i in aniso]
-ax.plot(xa - 0.12, tA, 'o', color=GA, ms=7, mec='white', mew=0.8, label='class A, converged embedding')
-ax.plot(xa + 0.12, tB, 's', color=GBB, ms=7, mec='white', mew=0.8, label='class B, converged embedding')
-ax.plot(xa, tP, 'D', mfc='none', mec=NEU, ms=7, mew=1.3, label='class A, single-cell embedding')
-ax.set_xticks(xa, aniso); ax.set_ylim(-4, 95); ax.set_yticks([0, 15, 30, 45, 60, 75, 90])
-ax.set_ylabel('easy-axis tilt from $c$ (deg)'); ax.legend(loc='center left', frameon=False, fontsize=7.3, bbox_to_anchor=(0.0, 0.62))
-label(ax, '(a)')
-ax = axs[1]; style(ax)
-rA = ratio(PAIR_A, 'E1'); rB = ratio(PAIR_B, 'E1')
-rA = [rA[IONS.index(i)] for i in aniso]; rB = [rB[IONS.index(i)] for i in aniso]
-ax.axhline(1, color=INK2, lw=0.8, ls='--')
-ax.plot(xa, rA, '-o', color=GA, ms=6, lw=1.6, mec='white', mew=0.8, label='class A / bulk 4$f$')
-ax.plot(xa, rB, '-s', color=GBB, ms=6, lw=1.6, mec='white', mew=0.8, label='class B / bulk 4$g$')
-ax.set_xticks(xa, aniso); ax.set_ylabel('GB / bulk, first excitation $E_1$'); ax.set_ylim(0.5, 2.4)
-ax.legend(loc='upper left', frameon=False); label(ax, '(b)')
-save(fig, 'Figure_3')
-
-# ------------------------------------------------------------------ Figure 4
-RAMP = {2: '#1c5cab', 4: '#5598e7', 6: '#a9cdf7'}
-fig, axs = plt.subplots(1, 2, figsize=(7.0, 2.7), sharey=True, gridspec_kw=dict(wspace=0.08))
-for ax, pair, ttl, lab in ((axs[0], PAIR_A, 'class A vs bulk 4$f$', '(a)'), (axs[1], PAIR_B, 'class B vs bulk 4$g$', '(b)')):
-    style(ax); ax.axhline(0, color=INK2, lw=0.8)
-    for j, k in enumerate((2, 4, 6)):
-        v = [100 * (d.loc[pair[i][1], 'S%d' % k] / d.loc[pair[i][0], 'S%d' % k] - 1) if i in pair else np.nan for i in IONS]
-        ax.bar(x + (j - 1) * 0.26, v, width=0.24, color=RAMP[k], edgecolor='white', linewidth=0.6, label='$k$ = %d' % k)
-    ax.set_xticks(x, IONS); ax.set_title(ttl, color=INK); label(ax, lab)
-axs[0].set_ylabel(r'change of rank-$k$ strength $S_k$ (%)'); axs[0].legend(frameon=False, loc='upper left', ncol=3)
-axs[0].yaxis.set_major_locator(MaxNLocator(7)); axs[0].set_ylim(-28, 55)
-save(fig, 'Figure_4')
-
-# ------------------------------------------------------------------ Figure 5 : ground-state 4f charge density
-def rdm(run):
-    dd, a, Vm, U = c.load(os.path.join(AN, 'parsed', run + '.json')); n = c.NEL[dd['ion']]
-    E, Uc, M = c.lfci(Vm, a['zeta'], a.get('F2ff') or 0, a.get('F4ff') or 0, a.get('F6ff') or 0, n)
-    nd = 2 if n % 2 else 1
-    D = np.zeros((7, 7), complex)
-    for i in range(7):
-        for j in range(7):
-            h = np.zeros((14, 14)); h[2 * i, 2 * j] = h[2 * i + 1, 2 * j + 1] = 1.0
-            O = c.one_body(h, n); D[i, j] = np.mean([Uc[:, s].conj() @ O @ Uc[:, s] for s in range(nd)])
-    return D
-
-
-from scipy.special import sph_harm_y
-def density_map(D, N=301, rmax=1.4):
-    xs = np.linspace(-rmax, rmax, N); X, Z = np.meshgrid(xs, xs)
-    # plane spanned by [110] (in-plane) and c
-    r = np.sqrt(X ** 2 + Z ** 2) + 1e-12; th = np.arccos(Z / r); ph = np.full_like(th, np.pi / 4); ph[X < 0] = np.pi / 4 + np.pi
-    Y = np.array([sph_harm_y(3, m, th, ph) for m in c.MS])            # (7,N,N)
-    ang = np.einsum('iab,ij,jab->ab', Y.conj(), D, Y).real
-    zeta = 3.0 / 0.55                                                # 4f radial ~ r^3 exp(-zeta r), <r> ~ 0.6 A
-    rad = r ** 6 * np.exp(-2 * zeta * r)
-    return xs, ang * rad
-
-
-RUN_FIG5 = True
-panels = [('Pr', BULK5['Pr'], GB13['Pr']), ('Nd', BULK5['Nd'], GB13['Nd']), ('Dy', BULK5['Dy'], GB13['Dy'])]
-fig, axs = plt.subplots(2, 3, figsize=(7.0, 4.75), gridspec_kw=dict(hspace=0.10, wspace=0.06))
-cache = {}
-for jc, (ion, rb, rg) in enumerate(panels):
-    maps = [density_map(rdm(rb)), density_map(rdm(rg))]
-    vmax = max(m[1].max() for m in maps)
-    for ir, (xs, rho) in enumerate(maps):
-        ax = axs[ir, jc]
-        im = ax.imshow(rho / vmax, extent=[xs[0], xs[-1], xs[0], xs[-1]], origin='lower', cmap='Blues', vmin=0, vmax=1)
-        ax.contour(xs, xs, rho / vmax, levels=[0.25, 0.5, 0.75], colors=[INK2], linewidths=0.5)
-        ax.set_xticks([-1, 0, 1]); ax.set_yticks([-1, 0, 1])
-        ax.tick_params(labelsize=7.5, colors=INK2, length=2)
-        if ir == 0: ax.set_title(r'%s$^{3+}$' % ion, color=INK); ax.set_xticklabels([])
-        else: ax.set_xlabel(r'[110] (Å)')
-        if jc == 0: ax.set_ylabel(('bulk 4$f$ site\n' if ir == 0 else 'GB class A site\n') + r'$c$ axis (Å)')
-        else: ax.set_yticklabels([])
-        ax.annotate('', xy=(1.22, 1.25), xytext=(1.22, 0.75), arrowprops=dict(arrowstyle='->', color=INK, lw=0.9))
-        ax.text(1.12, 1.0, '$c$', fontsize=8, ha='right', va='center', color=INK)
-        label(ax, '(%s)' % 'abcdef'[ir * 3 + jc])
-cb = fig.colorbar(im, ax=axs, shrink=0.75, pad=0.02); cb.set_label('ground-state 4$f$ density (normalised)', color=INK); cb.ax.tick_params(labelsize=7.5)
-save(fig, 'Figure_5')
-print('figures written to', OUT)
+# S2: exact rank decomposition, with no claimed radial-density measurement.
+c=start('Figure_S2',504,219)
+for panel,cls,ttl in [(0,'original','Finite-cell site comparison'),(1,'A','Sphere: A / bulk 4f'),(2,'B','Sphere: B / bulk 4g')]:
+    x=43+169*panel;xx,yy=axes(c,x,51,119,126,(-.6,5.6),(-105,60),list(enumerate(IONS)),[(v,str(v)) for v in [-100,-50,0,50]],ylab='Change in rank strength Sₖ (%)' if panel==0 else '',tag=f'({"abc"[panel]})',title=ttl)
+    line(c,[(xx(-.6),yy(0)),(xx(5.6),yy(0))],GRAY,width=.5)
+    for j,ion in enumerate(IONS):
+        if cls=='A' and ion=='Ce':continue
+        if cls=='original':br='FINITE_'+ion+'_bulk';gr='FINITE_'+ion+'_GB'
+        elif cls=='A':br=f'T{j+1:02d}_{ion}_bulk4f_atom5_R25';gr=f'R{[4,8,12,16,20,24][j]:02d}_{ion}_GB_R25_FeNeutral'
+        else:br=f'R{[2,6,10,14,18,22][j]:02d}_{ion}_bulk_R25_FeNeutral';gr=f'T{j+7:02d}_{ion}_GBclassB_atom9_R25'
+        for n,(rank,col) in enumerate([(2,'#215A95'),(4,'#6299C5'),(6,'#B8D4E8')]):
+            val=100*(f(gr,f'S{rank}')/f(br,f'S{rank}')-1);c.setFillColor(HexColor(col));c.rect(xx(j+(n-1)*.24)-1.9,min(yy(0),yy(val)),3.8,abs(yy(val)-yy(0)),fill=1,stroke=0)
+for j,(rank,col) in enumerate([(2,'#215A95'),(4,'#6299C5'),(6,'#B8D4E8')]):
+    c.setFillColor(HexColor(col));c.rect(154+j*75,201,9,7,fill=1,stroke=0);txt(c,168+j*75,201,f'k = {rank}',8)
+finish(c,'Figure_S2')
+print('Built Figures 2–5 and S1–S2 from archived data; retained Figure 1.')

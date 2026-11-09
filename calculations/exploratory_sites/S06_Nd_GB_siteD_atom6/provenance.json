@@ -1,0 +1,24 @@
+{
+ "job": "S06_Nd_GB_siteD_atom6",
+ "ion": "Nd",
+ "environment": "GB",
+ "atom_1based": 6,
+ "center_A": [
+  6.708785167885119,
+  2.067218832114878,
+  6.060891749357538
+ ],
+ "embedding": "minimage",
+ "basis": "SARC2-DKH-QZVP",
+ "nevpt2": false,
+ "n_pc": 137,
+ "net_charge": 21.0,
+ "min_pc_dist": 3.009,
+ "max_pc_dist": 13.132,
+ "charged_dipole_eA": [
+  49.61,
+  -49.61,
+  -144.9
+ ],
+ "purpose": "R4.2/R1: mid-grain class D (15 Fe)"
+}

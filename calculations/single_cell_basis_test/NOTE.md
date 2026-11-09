@@ -1,4 +1,3 @@
-# Basis-set test in the single-cell embedding
+# Finite-cell basis checks
 
-C07/C08: Nd, SARC2-DKH-TZVP instead of QZVP, single-cell embedding (Supplementary Table S5). Parsed results:
-analysis/parsed/C07_*.json, C08_*.json; reference PUB_Nd_bulk / PUB_Nd_GB.
+C07/C08 use SARC2-DKH-TZVP in place of QZVP for Nd. These are archived sensitivity checks, not the source of the main figures. Parsed results and run metadata identify the separate `PUB_Nd_*` references. The focused current Supplementary Table S6 reports the selected embedding, radius, charge-partition and NEVPT2 checks instead.

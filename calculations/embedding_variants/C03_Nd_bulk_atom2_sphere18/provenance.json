@@ -1,0 +1,26 @@
+{
+ "job": "C03_Nd_bulk_atom2_sphere18",
+ "ion": "Nd",
+ "environment": "bulk",
+ "atom_1based": 2,
+ "center_A": [
+  3.126670125106339,
+  3.126670125106339,
+  6.064974480607277
+ ],
+ "embedding": "sphere",
+ "basis": "SARC2-DKH-QZVP",
+ "nevpt2": false,
+ "n_pc": 1780,
+ "net_charge": -0.00038,
+ "min_pc_dist": 2.8942,
+ "max_pc_dist": 17.992,
+ "charged_dipole_eA": [
+  42.33,
+  42.33,
+  -0.0
+ ],
+ "purpose": "R1: neutral ion-centred 18 A sphere, Fe=-3/14",
+ "sphere_raw_total": 68.14285714285715,
+ "sphere_n_outer_shell": 532
+}

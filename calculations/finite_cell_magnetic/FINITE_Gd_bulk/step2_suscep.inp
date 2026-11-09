@@ -1,0 +1,30 @@
+# STEP2 : full SA-CASSCF + SOC + AILFT in perfect Bulk field, reads step1.gbw
+! DKH2 RIJCOSX SARC2-DKH-QZVP AutoAux CASSCF MORead
+%moinp "step2.gbw"
+%maxcore 14000
+%pal nprocs 16 end
+%pointcharges "Bulk_defect.pc"
+%casscf
+    nel 7
+  norb 7
+  mult 8, 6
+  nroots 1, 48
+  orbstep SuperCI
+  switchstep DIIS
+  shiftup 10.0
+  shiftdn 10.0
+  minshift 0.1
+  rel
+    dosoc true
+    printlevel 3
+    gtensor true
+    dosusceptibility true
+    susctensor_nfields 1
+    susctensor_magfields[0] = 1000,0,0
+  end
+  actorbs forbs
+end
+* xyz 3 8
+Gd   3.12667013  3.12667013  6.06497448
+*
+

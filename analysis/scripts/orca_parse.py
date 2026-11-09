@@ -6,7 +6,7 @@ Stores: AILFT one-electron matrix (cm-1, ORCA real-f basis), LF eigenvalues and 
 Slater F2,F4,F6 and zeta (cm-1) for every AILFT block (CASSCF and, if present, NEVPT2),
 LF-SOC-X/Y/Z integrals, QDPT-SOC eigenvalues (first block = CASSCF, second = NEVPT2 if present),
 and the Kramers-pair-1 <S>,<L> matrix elements."""
-import re, sys, json
+import re, sys, json, gzip
 HA2CM = 219474.6313705
 NUM = r'-?\d+\.\d+'
 
@@ -22,7 +22,10 @@ def read_matrix(L, i, n=7):
     return M, i
 
 def parse(path):
-    txt = open(path, errors='replace').read(); L = txt.splitlines()
+    opener = gzip.open if str(path).endswith('.gz') else open
+    with opener(path, 'rt', errors='replace') as handle:
+        txt = handle.read()
+    L = txt.splitlines()
     out = dict(normal='ORCA TERMINATED NORMALLY' in txt, ailft={}, soc=[], kramers=None, Lsoc={})
     for i, l in enumerate(L):
         s = l.strip()

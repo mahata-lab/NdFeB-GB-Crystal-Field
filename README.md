@@ -1,84 +1,59 @@
-# Grain-boundary 4f crystal fields in Nd₂Fe₁₄B — inputs, embeddings and analysis
+# Local 4f crystal fields in Nd₂Fe₁₄B
 
-Data and code for
+Inputs, structures, extracted results and reproducible figure data accompanying the manuscript:
 
-> A. Mahata and M. Zakotnik, *Grain Boundary Distortion Strengthens the Local 4f Crystal Field and Separates Heavy from
-> Light Lanthanides in Nd₂Fe₁₄B*, Materialia (2026).
+> A. Mahata and M. Zakotnik, *Grain-Boundary Environments Reorient the Local 4f Susceptibility Axis and Split Light from Heavy Lanthanides in Nd₂Fe₁₄B*. Submitted to Materialia; revision dataset. No publication DOI has been assigned in this repository.
 
-The repository contains everything needed to rebuild the point-charge embeddings, rerun every ORCA calculation, and
-regenerate all tables and figures of the paper from the extracted results.
+The main comparison retains the original **finite-cell embedding** and the five original figure topics, including temperature-dependent susceptibility. Extended neutral spheres, matched parent sublattices and other checks are supplied as sensitivity calculations. They do not establish a uniquely correct embedding or an embedding-independent light/heavy crossover. See [model scope](docs/model-scope.md).
 
-## Contents
+## Start here
 
-```
-structures/     relaxed DFT supercells (VASP CONTCAR) and the Fe coordination of every rare-earth site
-                  bulk_Nd8Fe56B4_CONTCAR          bulk Nd2Fe14B, 68 atoms
-                  GB90twist_Nd16Fe112B8_CONTCAR   90° [001] twist grain boundary, 136 atoms
-                  site_coordination.csv           (Supplementary Table S3)
-embedding/      build_inputs.py      regenerates every job folder in calculations/ from structures/ (and checks them)
-                pick_f_rotations.py  4f orbital selection for the capped-ECP jobs
-                run_jobs.sh          runs job folders one after another on a workstation
-                submit_template.slurm
-calculations/   one folder per ORCA job: step*.inp, sphere.pc, run.sh, provenance.json   (see calculations/README.md)
-                jobs.csv             index of all 90 jobs: site, embedding, method, status, where used in the paper
-analysis/       parsed/   results extracted from every orca.out (AILFT matrix, Slater-Condon parameters, zeta,
-                          spin-orbit levels, Kramers-doublet <L>,<S>), one JSON per job
-                scripts/  parsing, crystal-field analysis, tables, figures
-                tables/   all derived tables (CSV)
-figures/        Figures 1-5 of the paper
-```
+| Location | Contents |
+|---|---|
+| [figures/](figures/) | Current Figures 1-5 and Supplementary Figures S1-S2, PNG/PDF |
+| [supplementary/](supplementary/) | Current supplementary PDF, editable TeX and Tables S1-S10 |
+| [analysis/tables/](analysis/tables/) | Current numerical figure data and exact crystal-field coefficients |
+| [calculations/jobs.csv](calculations/jobs.csv) | Dataset index, input directories, current use, status and source-output hashes |
+| [calculations/](calculations/README.md) | Original and sensitivity inputs; complete compressed outputs for the 12 main magnetic-property reruns |
+| [analysis/orbitals/](analysis/orbitals/) | Six losslessly compressed orbital cubes used in Figure 5 |
+| [analysis/parsed/](analysis/parsed/) | 116 extracted ORCA datasets, including clearly indexed historical/exploratory records |
+| [structures/](structures/) | Full relaxed 68-atom bulk and 136-atom interface coordinates and coordination data |
+| [embedding/](embedding/) | Regenerator for the 78 originally generated sphere/capped-ECP job folders |
+| [archive/](archive/README.md) | Previous figure/table/script versions retained for provenance; not the current paper |
 
-## Requirements
+![Bulk and interface eigenorbital density on one common scale](figures/Figure_5.png)
 
-* ORCA 6.1.1 (https://orcaforum.kofo.mpg.de) with the matching OpenMPI, for the quantum-chemical calculations.
-* Python ≥ 3.9 with numpy, scipy (≥ 1.15), pandas and matplotlib (`pip install -r requirements.txt`) for everything else.
+Figure 5 projects the full density of one archived AILFT eigenorbital along c. All six panels use the same 0–7 Å⁻² density range and square-root color mapping after one-electron normalization; the colorbar ticks give physical density. Its individual-orbital extent is not the total correlated 4f-shell radius or a magnetic axis.
 
-## Reproducing the paper
+## Reproduce the current results
 
-**1. Embeddings and inputs.** `python3 embedding/build_inputs.py --check` rebuilds all 78 generated job folders from the two
-CONTCAR files and compares them with `calculations/` (point charges to 10⁻⁶ e/Å, inputs line by line). To build fresh
-folders: `python3 embedding/build_inputs.py OUTDIR [job prefixes]`.
+Python 3.10 or later:
 
-**2. ORCA calculations.** In a job folder, `ORCA_BIN=/full/path/to/orca bash run.sh`, or for several folders
-`bash embedding/run_jobs.sh calculations/matched_sites/T0*`. Each job runs three stages (free ion → ion in the field →
-SA-CASSCF + QDPT spin–orbit coupling + AILFT + g tensor) and writes `orca.out`.
-
-**3. Extraction.** `python3 analysis/scripts/orca_parse.py <job>/orca.out <job> <ion> analysis/parsed/<job>.json`.
-The JSON files of all published calculations are included, so steps 4–5 can be run directly.
-
-**4. Tables** (from `analysis/`):
-
-```
-python3 scripts/cf_tables.py parsed tables/cf_all_runs.csv            # all descriptors, one row per calculation
-python3 scripts/derived_tables.py tables/cf_all_runs.csv tables/      # Table 2 (matched pairs), Table 3 / S5 (sensitivity)
-python3 scripts/uvw_tables.py tables/cf_all_runs.csv tables/uvw_tests.csv   # capped-ECP, substitution, mid-grain (Tables 3, 4)
-python3 scripts/export_bkq.py parsed tables/wybourne_Bkq_all_runs.csv # complete Wybourne parameter sets (Table S4)
-python3 scripts/easy_axis_lfci.py parsed tables/easy_axis_lfci.csv $(cut -d, -f1 tables/easy_axis_lfci.csv | tail -n +2)
-python3 scripts/nucleation_1d.py tables/nucleation_1d.csv              # Table S7
-python3 scripts/pointcharge_sites.py ../structures/bulk_Nd8Fe56B4_CONTCAR ../structures/GB90twist_Nd16Fe112B8_CONTCAR tables 25
-python3 scripts/make_supplementary.py . ../structures/bulk_Nd8Fe56B4_CONTCAR ../structures/GB90twist_Nd16Fe112B8_CONTCAR ../structures/site_coordination.csv si_tables.tex
+```bash
+python -m pip install -r requirements.txt
+python analysis/scripts/reproduce.py --output build
+python analysis/scripts/verify_repository.py
 ```
 
-**5. Figures:** `python3 scripts/make_figures.py . ../figures` (Figures 2–5; Figure 1 is the structure rendering).
+The first command sequence recalculates the descriptors and complete Wybourne coefficients from the included JSON records, extracts susceptibility directly from the compressed saved outputs, integrates the six full orbital cubes, regenerates Figures 2-5/S1-S2, and rebuilds Supplementary Tables S4-S10. Structural Tables S1-S3 are retained coordinate tables checked against the included structures. Results go into `build/`; the supplied paper assets are not overwritten. Figure 1 is the retained structural rendering. Font substitution on non-Windows systems can change appearance without changing the plotted data.
 
-Running steps 4–5 on the included JSON files reproduces the tables in `analysis/tables/`, the Supplementary tables and
-Figures 2–5 exactly.
+See [reproduction instructions](docs/reproducing.md) for the outputs, ORCA restart requirements, input checks and supplementary compilation. No ORCA installation or new calculation is needed to regenerate the supplied analysis.
 
-## Conventions
+## Which datasets are used?
 
-* **Embedding.** Point charges RE +3, B −3, Fe −3/14 (formula-unit neutral; alternative partition B −1, Fe −5/14). All periodic
-  images within R of the ion are included; the residual charge of the truncated sphere is spread over the charges in the outer
-  2 Å, so every embedding is exactly neutral. Production radius R = 25 Å. The ion is a bare quantum ion (no explicit ligands).
-* **Sites.** One-based atom indices of the CONTCAR files. Bulk atoms 1–4 are Nd 4g (x,−x,0), atoms 5–8 Nd 4f (x,x,0)
-  (Herbst et al. coordinates). Grain-boundary classes: A {5,8,13,16} and B {1,4,9,12} on the boundary planes (images of 4f and 4g),
-  C {2,3,10,11} and D {6,7,14,15} midway between the planes. Matched pairs: GB atom 13 (A) ↔ bulk atom 5 (4f);
-  GB atom 9 (B) ↔ bulk atom 2 (4g).
-* **Descriptors** (cm⁻¹). Total 4f splitting = spread of the seven AILFT orbital energies; Wybourne parameters B<sup>k</sup><sub>q</sub>
-  from an exact decomposition of the AILFT matrix (cell frame, z ∥ c); A₂⁰⟨r²⟩ = B²₀/2; S<sub>k</sub> = [Σ<sub>q</sub>|B<sup>k</sup><sub>q</sub>|²/(2k+1)]<sup>1/2</sup>;
-  E₁ = first excitation of the ground J multiplet from the ab initio spin–orbit spectrum. ORCA prints the AILFT matrix in
-  Hartree; `orca_parse.py` converts to cm⁻¹.
+- `FINITE_*`: the saved finite-cell magnetic-property reruns used for the main numerical tables, susceptibility curves and response axes.
+- `PUB_*`: separate archived finite-cell production outputs, retained for reconciliation. `PUB_Gd_*` and `FINITE_Gd_*` refer to the same saved outputs and are not independent samples.
+- `R*`, `T*`, `N*`, `C*`, `U*`: embedding, matched-site, NEVPT2, active-space, basis and capped-ECP checks; see the dataset index for their individual roles.
+- `S*`, `V*`, `W*`: historical/exploratory site or unrelaxed substitution calculations, not used as evidence for the current paper's main results.
 
-## Licence
+The complete [Wybourne CSV](analysis/tables/wybourne_Bkq_all_runs.csv) has 124 run/block rows. It includes historical checks beyond the focused supplement; use the dataset index instead of pooling all rows. It is a separate data file and is **not embedded in the supplementary PDF**. [Data definitions and figure/table mapping](docs/data-guide.md) explain units and conventions.
 
-Code: MIT (see `LICENSE`). Data (structures, inputs, parsed results, tables, figures): CC BY 4.0. Please cite the paper when
-using these data.
+Contrast mapping and literature support are documented in [Figure 5 display notes](docs/figure5-contrast.md).
+
+## Scientific scope
+
+The finite-cell selected sites are bulk atom 2 (4g) and interface atom 13 (4f parent), so this contrast includes parent-sublattice differences. The interface is a coherent rotational-registry model; the 90° rotation is symmetry equivalent at the tetragonal orientation level. AILFT one-electron orbital gaps are distinct from many-electron SOC excitations. The isolated-ion susceptibility omits Fe exchange, and the conditional Stoner-Wohlfarth estimate is not a coercivity or spatial nucleation calculation.
+
+## Citation and licence
+
+Citation metadata are in [CITATION.cff](CITATION.cff). Code is MIT; structures, calculation inputs, numerical data and figures are CC BY 4.0, as in the original repository licence. See [LICENSE](LICENSE). Cite the manuscript and this repository when using the material. Journal publication details can be added after acceptance.

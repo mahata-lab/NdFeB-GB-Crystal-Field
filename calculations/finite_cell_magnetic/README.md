@@ -1,0 +1,7 @@
+# Saved finite-cell magnetic-property reruns
+
+Twelve datasets (`FINITE_<ion>_<bulk|GB>`) provide the common numerical basis for the current main Tables 1-2 and Figures 2-4. Each folder includes the actual saved `step2_suscep.inp`, its unchanged point-charge array, and the complete output compressed losslessly as `step2_suscep.out.gz`. These are archived completed calculations, not new simulations.
+
+The input reads a previously converged `step2.gbw`; this binary restart is not included. The archived input uses ORCA's default 75 CASSCF macroiterations (confirmed in each output), whereas the separate production `step2.inp` allows 200. To rerun, first obtain converged finite-cell field orbitals using the original production protocol, then copy `step2.gbw` into this folder and run the saved magnetic input with ORCA 6.1.1. The ten Ce/Pr/Nd/Tb/Dy production input sets are in `../single_cell_embedding/`; Gd's standalone magnetic input and original completed output are supplied here. No promise of byte-identical reruns from different starting orbitals is made.
+
+The raw outputs contain both finite-field and zero-static-field response blocks. The repository extraction selects the zero-field 1-40 K trace average and the zero-field 2 K molecular-frame tensor. Those tensor entries are printed in chi*T units (cm3 K/mol); their eigenvectors give the main Figure 3 axes. Gd is omitted from the orbital easy-axis assignment.

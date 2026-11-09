@@ -1,0 +1,24 @@
+{
+ "job": "S03_Dy_GB_siteB_atom9",
+ "ion": "Dy",
+ "environment": "GB",
+ "atom_1based": 9,
+ "center_A": [
+  7.419578612049911,
+  7.419578612049911,
+  12.171727510093039
+ ],
+ "embedding": "minimage",
+ "basis": "SARC2-DKH-QZVP",
+ "nevpt2": false,
+ "n_pc": 137,
+ "net_charge": 21.0,
+ "min_pc_dist": 2.7522,
+ "max_pc_dist": 13.024,
+ "charged_dipole_eA": [
+  32.55,
+  32.55,
+  -0.69
+ ],
+ "purpose": "R4.2/R1: second boundary-plane RE class"
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "ion": "Ce",
+    "environment": "Bulk",
+    "path": "analysis/orbitals/Ce_Bulk_mo27a.cube.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/cubes/Ce_Bulk_run/step2.casscf.lft.mo27a.cube",
+    "uncompressed_sha256": "d0764b5adf884d2ec65bad8a3b29911d3a2a987550efc0261a33a0a7751173c2"
+  },
+  {
+    "ion": "Ce",
+    "environment": "GB",
+    "path": "analysis/orbitals/Ce_GB_mo27a.cube.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/cubes/Ce_GB_run/step2.casscf.lft.mo27a.cube",
+    "uncompressed_sha256": "158e3708de733ec85637acf69cbc74a7d79e5eb7a64b509cd4c8ace47e02d1cd"
+  },
+  {
+    "ion": "Pr",
+    "environment": "Bulk",
+    "path": "analysis/orbitals/Pr_Bulk_mo27a.cube.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/cubes/Pr_Bulk_run/step2.casscf.lft.mo27a.cube",
+    "uncompressed_sha256": "3daaef766c74d17a98613e744bb694cb436ca34c0cc8d30fbf8d4f3e7dd66310"
+  },
+  {
+    "ion": "Pr",
+    "environment": "GB",
+    "path": "analysis/orbitals/Pr_GB_mo27a.cube.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/cubes/Pr_GB_run/step2.casscf.lft.mo27a.cube",
+    "uncompressed_sha256": "3da47e7c0583d89bc4749749fa3da0c7cd1582ee7bc31c1f1dcab6d1c37f08f5"
+  },
+  {
+    "ion": "Dy",
+    "environment": "Bulk",
+    "path": "analysis/orbitals/Dy_Bulk_mo27a.cube.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/cubes/Dy_Bulk_run/step2.casscf.lft.mo27a.cube",
+    "uncompressed_sha256": "3516e1ce63e724f131216e4032f078aae030431a19535acbfbf52b78abf85be1"
+  },
+  {
+    "ion": "Dy",
+    "environment": "GB",
+    "path": "analysis/orbitals/Dy_GB_mo27a.cube.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/cubes/Dy_GB_run/step2.casscf.lft.mo27a.cube",
+    "uncompressed_sha256": "a8445ec7ad18a536d9e7bc888f8f108414ccec01ee45e493fe419c80a05da76d"
+  }
+]

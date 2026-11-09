@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-08",
+  "parsed_datasets": 116,
+  "indexed_records": 120,
+  "coefficient_rows": 124,
+  "main_raw_outputs_verified": 12,
+  "orbital_cubes_verified": 6,
+  "susceptibility_points": 480,
+  "generated_input_folders_checked": 78,
+  "generated_input_folders_matched": 78,
+  "figures_pixel_identical_to_current_paper": 7,
+  "supplementary_tables": 10,
+  "numerical_table_rows_match_current_paper": true,
+  "source_files_in_integrity_manifest": 597,
+  "git_diff_check": "passed",
+  "staged": false,
+  "committed": false,
+  "pushed": false,
+  "new_orca_simulations": 0,
+  "figure5_contrast": {
+    "gamma": 0.5,
+    "common_range_Aminus2": [
+      0,
+      7
+    ],
+    "all_source_values_unchanged": true,
+    "all_seven_figures_reproduced_identically": true
+  },
+  "figure5_labels_and_contours": {
+    "orbital_index": "MO27",
+    "major_tick_interval_A": 0.5,
+    "minor_tick_interval_A": 0.25,
+    "contour_levels_Aminus2": [
+      0.25,
+      0.75,
+      2
+    ],
+    "original_numerical_tables_unchanged": true,
+    "all_figure_PNGs_reproduced": true
+  },
+  "coherence_review": {
+    "original_title_restored": true,
+    "susceptibility_extraction": "explicit zero-field chiT tensor trace / 3",
+    "original_curve_rounding_preserved": 480,
+    "axis_definitions_reconciled": true,
+    "all_seven_figures_reproduced_identically": true,
+    "supplementary_sources_reproduced_identically": true,
+    "git_diff_check": "passed",
+    "staged": false,
+    "committed": false,
+    "pushed": false
+  }
+}

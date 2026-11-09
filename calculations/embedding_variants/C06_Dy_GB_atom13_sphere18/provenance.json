@@ -1,0 +1,26 @@
+{
+ "job": "C06_Dy_GB_atom13_sphere18",
+ "ion": "Dy",
+ "environment": "GB",
+ "atom_1based": 13,
+ "center_A": [
+  2.1699320291920876,
+  6.606071970807913,
+  12.083940737345536
+ ],
+ "embedding": "sphere",
+ "basis": "SARC2-DKH-QZVP",
+ "nevpt2": false,
+ "n_pc": 1797,
+ "net_charge": -0.000158,
+ "min_pc_dist": 2.7656,
+ "max_pc_dist": 17.998,
+ "charged_dipole_eA": [
+  -131.07,
+  131.07,
+  -0.55
+ ],
+ "purpose": "R1: neutral sphere, heavy ion",
+ "sphere_raw_total": -21.00000000000002,
+ "sphere_n_outer_shell": 549
+}

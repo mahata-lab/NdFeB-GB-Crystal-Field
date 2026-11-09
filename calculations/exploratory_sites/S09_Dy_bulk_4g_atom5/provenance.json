@@ -1,0 +1,24 @@
+{
+ "job": "S09_Dy_bulk_4g_atom5",
+ "ion": "Dy",
+ "environment": "bulk",
+ "atom_1based": 5,
+ "center_A": [
+  6.405109141040901,
+  6.405109141040901,
+  7.314393755202169e-16
+ ],
+ "embedding": "minimage",
+ "basis": "SARC2-DKH-QZVP",
+ "nevpt2": false,
+ "n_pc": 79,
+ "net_charge": 9.0,
+ "min_pc_dist": 3.0422,
+ "max_pc_dist": 7.768,
+ "charged_dipole_eA": [
+  -11.18,
+  -11.18,
+  -0.0
+ ],
+ "purpose": "R4.2: other bulk sublattice"
+}

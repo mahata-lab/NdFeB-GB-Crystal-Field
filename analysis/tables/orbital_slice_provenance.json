@@ -1,0 +1,69 @@
+{
+  "common_density_vmin_Aminus2": 0,
+  "common_density_vmax_Aminus2": 7.0,
+  "color_mapping": "square root: u=(P/Pmax)^(1/2)",
+  "gamma": 0.5,
+  "independent_panel_normalization": false,
+  "contour_levels_Aminus2": [
+    0.25,
+    0.75,
+    2.0
+  ],
+  "contour_display_interpolation": "bicubic",
+  "orbitals": [
+    {
+      "ion": "Ce",
+      "environment": "Bulk",
+      "source": "analysis/orbitals/Ce_Bulk_mo27a.cube.gz",
+      "plane": "Full orbital density projected along c onto a,b",
+      "grid_norm": 0.998413002106202,
+      "orbital_r_rms_A": 0.8373911321140215,
+      "voxel_bohr3": 0.005565464760413374
+    },
+    {
+      "ion": "Ce",
+      "environment": "GB",
+      "source": "analysis/orbitals/Ce_GB_mo27a.cube.gz",
+      "plane": "Full orbital density projected along c onto a,b",
+      "grid_norm": 1.001808125728264,
+      "orbital_r_rms_A": 0.6094749207201913,
+      "voxel_bohr3": 0.005565464760413374
+    },
+    {
+      "ion": "Pr",
+      "environment": "Bulk",
+      "source": "analysis/orbitals/Pr_Bulk_mo27a.cube.gz",
+      "plane": "Full orbital density projected along c onto a,b",
+      "grid_norm": 0.9989413258298008,
+      "orbital_r_rms_A": 0.6612050124576265,
+      "voxel_bohr3": 0.005565464760413374
+    },
+    {
+      "ion": "Pr",
+      "environment": "GB",
+      "source": "analysis/orbitals/Pr_GB_mo27a.cube.gz",
+      "plane": "Full orbital density projected along c onto a,b",
+      "grid_norm": 1.0023162601828866,
+      "orbital_r_rms_A": 0.5848866923615386,
+      "voxel_bohr3": 0.005565464760413374
+    },
+    {
+      "ion": "Dy",
+      "environment": "Bulk",
+      "source": "analysis/orbitals/Dy_Bulk_mo27a.cube.gz",
+      "plane": "Full orbital density projected along c onto a,b",
+      "grid_norm": 1.000352645807795,
+      "orbital_r_rms_A": 0.47147830850408096,
+      "voxel_bohr3": 0.005565464760413374
+    },
+    {
+      "ion": "Dy",
+      "environment": "GB",
+      "source": "analysis/orbitals/Dy_GB_mo27a.cube.gz",
+      "plane": "Full orbital density projected along c onto a,b",
+      "grid_norm": 1.008776256243641,
+      "orbital_r_rms_A": 0.4646472373455699,
+      "voxel_bohr3": 0.005565464760413374
+    }
+  ]
+}

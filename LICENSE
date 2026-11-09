@@ -1,4 +1,4 @@
-MIT License (code in embedding/ and analysis/scripts/)
+MIT License (code, including historical scripts in archive/)
 
 Copyright (c) 2026 Avik Mahata and M. Zakotnik
 
@@ -14,5 +14,5 @@ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO 
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Data (structures/, calculations/, analysis/parsed/, analysis/tables/, figures/) are licensed under CC BY 4.0
+Data (structures, calculation inputs/outputs, parsed results, numerical tables, orbital cubes, supplementary material and figures, including their archived versions) are licensed under CC BY 4.0
 (https://creativecommons.org/licenses/by/4.0/).

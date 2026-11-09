@@ -1,0 +1,930 @@
+[
+  {
+    "dataset": "C01_Nd_bulk_atom2_minimage",
+    "parsed_result": "analysis/parsed/C01_Nd_bulk_atom2_minimage.json",
+    "calculation_directory": "calculations/embedding_variants/C01_Nd_bulk_atom2_minimage",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/C01_Nd_bulk_atom2_minimage/orca.out",
+    "original_output_sha256": "577fff0dfdc185b0749eedd7fe09ce5c475822644ed56642587230eb028ea8ce"
+  },
+  {
+    "dataset": "C03_Nd_bulk_atom2_sphere18",
+    "parsed_result": "analysis/parsed/C03_Nd_bulk_atom2_sphere18.json",
+    "calculation_directory": "calculations/embedding_variants/C03_Nd_bulk_atom2_sphere18",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/C03_Nd_bulk_atom2_sphere18/orca.out",
+    "original_output_sha256": "705be6abae727bb6fb7711b8a9936fd96050f25c5f121eb24c5dcd72647a6dc7"
+  },
+  {
+    "dataset": "C04_Nd_GB_atom13_sphere18",
+    "parsed_result": "analysis/parsed/C04_Nd_GB_atom13_sphere18.json",
+    "calculation_directory": "calculations/embedding_variants/C04_Nd_GB_atom13_sphere18",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/C04_Nd_GB_atom13_sphere18/orca.out",
+    "original_output_sha256": "9fffd7356f74e1747e866e37faea92de0e1cd1037ed69a23cb8193650086edec"
+  },
+  {
+    "dataset": "C05_Dy_bulk_atom2_sphere18",
+    "parsed_result": "analysis/parsed/C05_Dy_bulk_atom2_sphere18.json",
+    "calculation_directory": "calculations/embedding_variants/C05_Dy_bulk_atom2_sphere18",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/C05_Dy_bulk_atom2_sphere18/orca.out",
+    "original_output_sha256": "42c9b6cfdd78246acaeec8f30020732ab940fce31e642f5ce3f9bd8740713fb2"
+  },
+  {
+    "dataset": "C06_Dy_GB_atom13_sphere18",
+    "parsed_result": "analysis/parsed/C06_Dy_GB_atom13_sphere18.json",
+    "calculation_directory": "calculations/embedding_variants/C06_Dy_GB_atom13_sphere18",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/C06_Dy_GB_atom13_sphere18/orca.out",
+    "original_output_sha256": "209a3513cfadfa67ca6d7397962819c17e841d09ab5f865feb2881d9e6e1dab3"
+  },
+  {
+    "dataset": "C07_Nd_bulk_atom2_TZ",
+    "parsed_result": "analysis/parsed/C07_Nd_bulk_atom2_TZ.json",
+    "calculation_directory": "calculations/single_cell_basis_test/C07_Nd_bulk_atom2_TZ",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/C07_Nd_bulk_atom2_TZ/orca.out",
+    "original_output_sha256": "1a8a5295894aa8f71e19665c1abcb214dd7f9932ece001856d907851f1c8e4ac"
+  },
+  {
+    "dataset": "C08_Nd_GB_atom13_TZ",
+    "parsed_result": "analysis/parsed/C08_Nd_GB_atom13_TZ.json",
+    "calculation_directory": "calculations/single_cell_basis_test/C08_Nd_GB_atom13_TZ",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/C08_Nd_GB_atom13_TZ/orca.out",
+    "original_output_sha256": "d00c4aa82b06d4153c7b38eaefafba5a27afbcaf022211188757f42f7f18445a"
+  },
+  {
+    "dataset": "FINITE_Ce_GB",
+    "parsed_result": "analysis/parsed/FINITE_Ce_GB.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Ce_GB",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Ce_GB/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Ce_GB/step2_suscep.out",
+    "original_output_sha256": "03c4e2d4b65ccc3d7e474f3d110cf75c1ac8599fb56f0ecbb15cf77b005ff157"
+  },
+  {
+    "dataset": "FINITE_Ce_bulk",
+    "parsed_result": "analysis/parsed/FINITE_Ce_bulk.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Ce_bulk",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Ce_bulk/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Ce_bulk/step2_suscep.out",
+    "original_output_sha256": "14092c04e64bf49278e43c04f31d8412abf586db01712d80fec1ddbbcfd6bf15"
+  },
+  {
+    "dataset": "FINITE_Dy_GB",
+    "parsed_result": "analysis/parsed/FINITE_Dy_GB.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Dy_GB",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Dy_GB/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Dy_GB/step2_suscep.out",
+    "original_output_sha256": "7794472008cabd941f1de2d1a39fa871e03ed0de2cd0535db610239d38084dda"
+  },
+  {
+    "dataset": "FINITE_Dy_bulk",
+    "parsed_result": "analysis/parsed/FINITE_Dy_bulk.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Dy_bulk",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Dy_bulk/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Dy_bulk/step2_suscep.out",
+    "original_output_sha256": "9dde8355caae6e345406de6dc0acf1e1aced0e06ae6ee749f012d4b6d73d0973"
+  },
+  {
+    "dataset": "FINITE_Gd_GB",
+    "parsed_result": "analysis/parsed/FINITE_Gd_GB.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Gd_GB",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Gd_GB/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Gd_GB/step2_suscep.out",
+    "original_output_sha256": "7ba2bed2e4118ab1890c6927f83304c717f78170f3d8798677970e0d9c49ef3e"
+  },
+  {
+    "dataset": "FINITE_Gd_bulk",
+    "parsed_result": "analysis/parsed/FINITE_Gd_bulk.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Gd_bulk",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Gd_bulk/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Gd_bulk/step2_suscep.out",
+    "original_output_sha256": "d4bbde2f0d0b58b811c7b38412b295ebb688091c4a6a2f5c37de8338c3aa5d62"
+  },
+  {
+    "dataset": "FINITE_Nd_GB",
+    "parsed_result": "analysis/parsed/FINITE_Nd_GB.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Nd_GB",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Nd_GB/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Nd_GB/step2_suscep.out",
+    "original_output_sha256": "a5661d13097d1e5a5edd783d0b826e69d8cd03366f9362875b0f23b6ef0146d8"
+  },
+  {
+    "dataset": "FINITE_Nd_bulk",
+    "parsed_result": "analysis/parsed/FINITE_Nd_bulk.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Nd_bulk",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Nd_bulk/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Nd_bulk/step2_suscep.out",
+    "original_output_sha256": "e504e50a4037a0d3529ee6211447371c07fda6317648ad75606a37c76cfe76fc"
+  },
+  {
+    "dataset": "FINITE_Pr_GB",
+    "parsed_result": "analysis/parsed/FINITE_Pr_GB.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Pr_GB",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Pr_GB/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Pr_GB/step2_suscep.out",
+    "original_output_sha256": "164ad19ef118df330533a2a4c3a27bb3c0dc04e48561572841cac4f9158fc05d"
+  },
+  {
+    "dataset": "FINITE_Pr_bulk",
+    "parsed_result": "analysis/parsed/FINITE_Pr_bulk.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Pr_bulk",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Pr_bulk/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Pr_bulk/step2_suscep.out",
+    "original_output_sha256": "3487b48e7e94c43e39eda1cd6d6feb50f557f526440afbb517d6d3292bb4e0ad"
+  },
+  {
+    "dataset": "FINITE_Tb_GB",
+    "parsed_result": "analysis/parsed/FINITE_Tb_GB.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Tb_GB",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Tb_GB/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Tb_GB/step2_suscep.out",
+    "original_output_sha256": "cd235f5cfb4e9c18a311adb87581c2248e5be4e3c1ff0dbdbef4fbbdc162e1cd"
+  },
+  {
+    "dataset": "FINITE_Tb_bulk",
+    "parsed_result": "analysis/parsed/FINITE_Tb_bulk.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Tb_bulk",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Tb_bulk/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Tb_bulk/step2_suscep.out",
+    "original_output_sha256": "3a7c549c8ce68e03bb8fa254932f7a29a457e92b1505dc1c2884406617fdecd1"
+  },
+  {
+    "dataset": "N01_Nd_bulk_atom2_NEVPT2",
+    "parsed_result": "analysis/parsed/N01_Nd_bulk_atom2_NEVPT2.json",
+    "calculation_directory": "calculations/finite_cell_nevpt2/N01_Nd_bulk_atom2_NEVPT2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/N01_Nd_bulk_atom2_NEVPT2/orca.out",
+    "original_output_sha256": "326a08d4100b8d9892501e1748039da6949e6dffc62db888b63b61e90d0e46cf"
+  },
+  {
+    "dataset": "N02_Nd_GB_atom13_NEVPT2",
+    "parsed_result": "analysis/parsed/N02_Nd_GB_atom13_NEVPT2.json",
+    "calculation_directory": "calculations/finite_cell_nevpt2/N02_Nd_GB_atom13_NEVPT2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/N02_Nd_GB_atom13_NEVPT2/orca.out",
+    "original_output_sha256": "9c37df2ab3b9bf3e3563cc121ec63f82f99207153cdf1693953082fcbd7038e4"
+  },
+  {
+    "dataset": "N03_Dy_bulk_atom2_NEVPT2",
+    "parsed_result": "analysis/parsed/N03_Dy_bulk_atom2_NEVPT2.json",
+    "calculation_directory": "calculations/finite_cell_nevpt2/N03_Dy_bulk_atom2_NEVPT2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/N03_Dy_bulk_atom2_NEVPT2/orca.out",
+    "original_output_sha256": "b0f4c822f3bcdd8ee94517949c5850af6c65106307cfe7d43e0016602a44a6e9"
+  },
+  {
+    "dataset": "N04_Dy_GB_atom13_NEVPT2",
+    "parsed_result": "analysis/parsed/N04_Dy_GB_atom13_NEVPT2.json",
+    "calculation_directory": "calculations/finite_cell_nevpt2/N04_Dy_GB_atom13_NEVPT2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/N04_Dy_GB_atom13_NEVPT2/orca.out",
+    "original_output_sha256": "d61cd276fc8528c26d4807989b42e5cc70068d70e9b68e2abd8325740d3e2df1"
+  },
+  {
+    "dataset": "PUB_Ce_GB",
+    "parsed_result": "analysis/parsed/PUB_Ce_GB.json",
+    "calculation_directory": "calculations/single_cell_embedding/Ce_GB_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/GB-Runs/Ce_GB_run/orca.out",
+    "original_output_sha256": "755e954c4d1defca8437a5d49d64bec79be9c1b4377b1b867cc745c40db8fb49"
+  },
+  {
+    "dataset": "PUB_Ce_bulk",
+    "parsed_result": "analysis/parsed/PUB_Ce_bulk.json",
+    "calculation_directory": "calculations/single_cell_embedding/Ce_Bulk_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/Bulk-Runs/Ce_Bulk_run/orca.out",
+    "original_output_sha256": "0b32bd29ace1b60fa96af28f42aea41166ad49d3d257f21f9d346cf35c19b27d"
+  },
+  {
+    "dataset": "PUB_Dy_GB",
+    "parsed_result": "analysis/parsed/PUB_Dy_GB.json",
+    "calculation_directory": "calculations/single_cell_embedding/Dy_GB_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/GB-Runs/Dy_GB_run/orca.out",
+    "original_output_sha256": "2310a64d7d0da964daa8328df6f68746376780999bd77573eebeaef6b3393bfe"
+  },
+  {
+    "dataset": "PUB_Dy_bulk",
+    "parsed_result": "analysis/parsed/PUB_Dy_bulk.json",
+    "calculation_directory": "calculations/single_cell_embedding/Dy_Bulk_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/Bulk-Runs/Dy_Bulk_run/orca.out",
+    "original_output_sha256": "6ac3b118b4482c2cdffd66bf1dbeef2089c1607636df156cff9549f8f39ac6d9"
+  },
+  {
+    "dataset": "PUB_Gd_GB",
+    "parsed_result": "analysis/parsed/PUB_Gd_GB.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Gd_GB",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Gd_GB/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Gd_GB/step2_suscep.out",
+    "original_output_sha256": "7ba2bed2e4118ab1890c6927f83304c717f78170f3d8798677970e0d9c49ef3e"
+  },
+  {
+    "dataset": "PUB_Gd_bulk",
+    "parsed_result": "analysis/parsed/PUB_Gd_bulk.json",
+    "calculation_directory": "calculations/finite_cell_magnetic/FINITE_Gd_bulk",
+    "raw_output": "calculations/finite_cell_magnetic/FINITE_Gd_bulk/step2_suscep.out.gz",
+    "original_source": "Materialia/NdFeB-Runs/bigblue/susceptibility-runs/Gd_bulk/step2_suscep.out",
+    "original_output_sha256": "d4bbde2f0d0b58b811c7b38412b295ebb688091c4a6a2f5c37de8338c3aa5d62"
+  },
+  {
+    "dataset": "PUB_Nd_GB",
+    "parsed_result": "analysis/parsed/PUB_Nd_GB.json",
+    "calculation_directory": "calculations/single_cell_embedding/Nd_GB_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/GB-Runs/Nd_GB_run/orca.out",
+    "original_output_sha256": "511e5f9c37b4f7cd9d3f17cbb929f61c4f80b28797becba988a9a4e43bc25037"
+  },
+  {
+    "dataset": "PUB_Nd_bulk",
+    "parsed_result": "analysis/parsed/PUB_Nd_bulk.json",
+    "calculation_directory": "calculations/single_cell_embedding/Nd_Bulk_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/Bulk-Runs/Nd_Bulk_run/orca.out",
+    "original_output_sha256": "ddc3bce2cc5126b319802821a9c4fa94171239f4084a91131897fc7c4e06a62d"
+  },
+  {
+    "dataset": "PUB_Pr_GB",
+    "parsed_result": "analysis/parsed/PUB_Pr_GB.json",
+    "calculation_directory": "calculations/single_cell_embedding/Pr_GB_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/GB-Runs/Pr_GB_run/orca.out",
+    "original_output_sha256": "92d2474e504dbfcde9798b82d7a1dcffbb8f843e28b33247845b24fe89c0c079"
+  },
+  {
+    "dataset": "PUB_Pr_bulk",
+    "parsed_result": "analysis/parsed/PUB_Pr_bulk.json",
+    "calculation_directory": "calculations/single_cell_embedding/Pr_Bulk_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/Bulk-Runs/Pr_Bulk_run/orca.out",
+    "original_output_sha256": "7fe01beec906fe924439583f097f92c8d750877de5229f6553fa6ef0d521f5f4"
+  },
+  {
+    "dataset": "PUB_Tb_GB",
+    "parsed_result": "analysis/parsed/PUB_Tb_GB.json",
+    "calculation_directory": "calculations/single_cell_embedding/Tb_GB_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/GB-Runs/Tb_GB_run/orca.out",
+    "original_output_sha256": "431d20f6352f955041d7f5e70a1bb0c1893531c55a03970c858edb5f380a135d"
+  },
+  {
+    "dataset": "PUB_Tb_bulk",
+    "parsed_result": "analysis/parsed/PUB_Tb_bulk.json",
+    "calculation_directory": "calculations/single_cell_embedding/Tb_Bulk_singlecell",
+    "raw_output": null,
+    "original_source": "Materialia/NdFeB-Runs/bigblue/Bulk-Runs/Tb_Bulk_run/orca.out",
+    "original_output_sha256": "61371d69b38cb2f6513ef09b85c24a4e3ed6e5ff064f233e23bd38a03ba93f3b"
+  },
+  {
+    "dataset": "R01_Ce_bulk_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R01_Ce_bulk_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R01_Ce_bulk_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R01_Ce_bulk_R18_FeNeutral/orca.out",
+    "original_output_sha256": "0e084b1f3b6b96bae965ed61685d4ed9e0b695ca09242e346a713b2ce6d2ad2e"
+  },
+  {
+    "dataset": "R02_Ce_bulk_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R02_Ce_bulk_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R02_Ce_bulk_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R02_Ce_bulk_R25_FeNeutral/orca.out",
+    "original_output_sha256": "87f80e80bae66c414cead6384dc4cad1d0aebf4f69f8fffb371e0f0200cc864b"
+  },
+  {
+    "dataset": "R03_Ce_GB_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R03_Ce_GB_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R03_Ce_GB_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R03_Ce_GB_R18_FeNeutral/orca.out",
+    "original_output_sha256": "96cd5188874640119926d92e240c1be30b9e8be7a68dfaa5c6bbe7adddcccd2d"
+  },
+  {
+    "dataset": "R05_Pr_bulk_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R05_Pr_bulk_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R05_Pr_bulk_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R05_Pr_bulk_R18_FeNeutral/orca.out",
+    "original_output_sha256": "45e4f0e727a96142b0ae0525115f45624b3ae93fb75ce8adf85cb2d04963141c"
+  },
+  {
+    "dataset": "R06_Pr_bulk_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R06_Pr_bulk_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R06_Pr_bulk_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R06_Pr_bulk_R25_FeNeutral/orca.out",
+    "original_output_sha256": "85662b6e70c624ab8ccbdd619947fd681a04b0b29c6e3b94f8d7d5e36ae177b7"
+  },
+  {
+    "dataset": "R07_Pr_GB_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R07_Pr_GB_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R07_Pr_GB_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R07_Pr_GB_R18_FeNeutral/orca.out",
+    "original_output_sha256": "16e23b8d42726c6b0739ed25e1133a9f94a4c6b0b740cc0617d668f4f42c1fad"
+  },
+  {
+    "dataset": "R08_Pr_GB_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R08_Pr_GB_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R08_Pr_GB_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R08_Pr_GB_R25_FeNeutral/orca.out",
+    "original_output_sha256": "3c77c6cfbb4cedbed313726c982f7bb0302abca340fc54ee20f20162f40396dc"
+  },
+  {
+    "dataset": "R09_Nd_bulk_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R09_Nd_bulk_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R09_Nd_bulk_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R09_Nd_bulk_R18_FeNeutral/orca.out",
+    "original_output_sha256": "fd5c1b996e05582b09e194480da23fd7732dd7b624731dc1f7b50da954b389e4"
+  },
+  {
+    "dataset": "R10_Nd_bulk_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R10_Nd_bulk_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R10_Nd_bulk_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R10_Nd_bulk_R25_FeNeutral/orca.out",
+    "original_output_sha256": "7820c176f92c4241badaa0dd51213c28b6cfdeaec028d7908e2e0a272893140f"
+  },
+  {
+    "dataset": "R11_Nd_GB_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R11_Nd_GB_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R11_Nd_GB_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R11_Nd_GB_R18_FeNeutral/orca.out",
+    "original_output_sha256": "94c780c3e8713191b5c2f5a8d4cf8908f2070a5060cf93dceb4438047cefb46b"
+  },
+  {
+    "dataset": "R12_Nd_GB_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R12_Nd_GB_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R12_Nd_GB_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R12_Nd_GB_R25_FeNeutral/orca.out",
+    "original_output_sha256": "0ddf505d5a27f431a79a0297a18291a833a1916d091bc0b60a9d1f3f6fb33ad2"
+  },
+  {
+    "dataset": "R13_Gd_bulk_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R13_Gd_bulk_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R13_Gd_bulk_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R13_Gd_bulk_R18_FeNeutral/orca.out",
+    "original_output_sha256": "c9ef9c1f7631455ba13a224caec6e37adc8ebb1a6aebe0979c0769c2890b71c1"
+  },
+  {
+    "dataset": "R14_Gd_bulk_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R14_Gd_bulk_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R14_Gd_bulk_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R14_Gd_bulk_R25_FeNeutral/orca.out",
+    "original_output_sha256": "6883ab8e707d9f033a0809ea393a0784a21b76cbd5c185b36895175596aa8a5f"
+  },
+  {
+    "dataset": "R15_Gd_GB_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R15_Gd_GB_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R15_Gd_GB_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R15_Gd_GB_R18_FeNeutral/orca.out",
+    "original_output_sha256": "cfc4104296296d3bb3223f872a4213debe40d045c590b84b14baba7499d509ec"
+  },
+  {
+    "dataset": "R16_Gd_GB_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R16_Gd_GB_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R16_Gd_GB_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R16_Gd_GB_R25_FeNeutral/orca.out",
+    "original_output_sha256": "ce1b667581a24eddb057b5c19a1506a2f512dc62fe41d57ff2e176bdacc9fa97"
+  },
+  {
+    "dataset": "R17_Tb_bulk_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R17_Tb_bulk_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R17_Tb_bulk_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R17_Tb_bulk_R18_FeNeutral/orca.out",
+    "original_output_sha256": "6efe8544eac424b18984da38bbba3025c3d9ed4bc03e68d9fb3db6204ecb60c7"
+  },
+  {
+    "dataset": "R18_Tb_bulk_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R18_Tb_bulk_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R18_Tb_bulk_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R18_Tb_bulk_R25_FeNeutral/orca.out",
+    "original_output_sha256": "7d93120d2cd648dadba7c473806f05ee2c28bac91258aa8e7e52fdade473cfd8"
+  },
+  {
+    "dataset": "R19_Tb_GB_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R19_Tb_GB_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R19_Tb_GB_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R19_Tb_GB_R18_FeNeutral/orca.out",
+    "original_output_sha256": "cc6c8d10ff609adb56a160e01d83e26d36df7e74749911b2599e739b5e586ef6"
+  },
+  {
+    "dataset": "R20_Tb_GB_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R20_Tb_GB_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R20_Tb_GB_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R20_Tb_GB_R25_FeNeutral/orca.out",
+    "original_output_sha256": "a87b8f4e5d28935d11c9344d7064acd14a9f5175f4cbff51c49dc69471c36c0d"
+  },
+  {
+    "dataset": "R21_Dy_bulk_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R21_Dy_bulk_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R21_Dy_bulk_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R21_Dy_bulk_R18_FeNeutral/orca.out",
+    "original_output_sha256": "53dcf3e80b50275516c174e8901c8b245d39c96378a049508c41db7416783b3f"
+  },
+  {
+    "dataset": "R22_Dy_bulk_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R22_Dy_bulk_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R22_Dy_bulk_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R22_Dy_bulk_R25_FeNeutral/orca.out",
+    "original_output_sha256": "a1ddbd096830ac5de8bb4fa7783f5a92285fe4ff35de0f16f4323fa794348d1d"
+  },
+  {
+    "dataset": "R23_Dy_GB_R18_FeNeutral",
+    "parsed_result": "analysis/parsed/R23_Dy_GB_R18_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R23_Dy_GB_R18_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R23_Dy_GB_R18_FeNeutral/orca.out",
+    "original_output_sha256": "60a32d0695bce549a4648cd996c3be9f657a49d3b60cce362dc95aca61c7d63a"
+  },
+  {
+    "dataset": "R24_Dy_GB_R25_FeNeutral",
+    "parsed_result": "analysis/parsed/R24_Dy_GB_R25_FeNeutral.json",
+    "calculation_directory": "calculations/converged_sphere/R24_Dy_GB_R25_FeNeutral",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R24_Dy_GB_R25_FeNeutral/orca.out",
+    "original_output_sha256": "e53c6d0bb5197358e5b8aa41b085130bf0214a403207b27454b6003f398a1da3"
+  },
+  {
+    "dataset": "R25_Nd_bulk_R25_FeBalt",
+    "parsed_result": "analysis/parsed/R25_Nd_bulk_R25_FeBalt.json",
+    "calculation_directory": "calculations/converged_sphere/R25_Nd_bulk_R25_FeBalt",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R25_Nd_bulk_R25_FeBalt/orca.out",
+    "original_output_sha256": "17810e205eb26564aabf3583a728b5f1de3530e95982d7fd6a21a4fba0915155"
+  },
+  {
+    "dataset": "R26_Nd_GB_R25_FeBalt",
+    "parsed_result": "analysis/parsed/R26_Nd_GB_R25_FeBalt.json",
+    "calculation_directory": "calculations/converged_sphere/R26_Nd_GB_R25_FeBalt",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R26_Nd_GB_R25_FeBalt/orca.out",
+    "original_output_sha256": "639dbb2c9ff6507298d8e0c482dd02b770c08bfe4fd7e271edf7e908c6ae2cfd"
+  },
+  {
+    "dataset": "R27_Dy_bulk_R25_FeBalt",
+    "parsed_result": "analysis/parsed/R27_Dy_bulk_R25_FeBalt.json",
+    "calculation_directory": "calculations/converged_sphere/R27_Dy_bulk_R25_FeBalt",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R27_Dy_bulk_R25_FeBalt/orca.out",
+    "original_output_sha256": "6ab538301f4e7129fc08b8991ddf73b99187daefab4f59ab5d2c4622e4dc9d08"
+  },
+  {
+    "dataset": "R28_Dy_GB_R25_FeBalt",
+    "parsed_result": "analysis/parsed/R28_Dy_GB_R25_FeBalt.json",
+    "calculation_directory": "calculations/converged_sphere/R28_Dy_GB_R25_FeBalt",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/redo-runs/R28_Dy_GB_R25_FeBalt/orca.out",
+    "original_output_sha256": "41ac339c9669bfd0a4c601d43b4743de94d0f89077fa95d72a710a8393f353a1"
+  },
+  {
+    "dataset": "S02_Nd_GB_siteB_atom9",
+    "parsed_result": "analysis/parsed/S02_Nd_GB_siteB_atom9.json",
+    "calculation_directory": "calculations/exploratory_sites/S02_Nd_GB_siteB_atom9",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/S02_Nd_GB_siteB_atom9/orca.out",
+    "original_output_sha256": "ff5c327c3ce6b905b9a4c3f80a40f0bb5cf5b3b98b5402bf3271a1a6fd10ae69"
+  },
+  {
+    "dataset": "S03_Dy_GB_siteB_atom9",
+    "parsed_result": "analysis/parsed/S03_Dy_GB_siteB_atom9.json",
+    "calculation_directory": "calculations/exploratory_sites/S03_Dy_GB_siteB_atom9",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/S03_Dy_GB_siteB_atom9/orca.out",
+    "original_output_sha256": "cc2a497878631cf55b4ad890697209e3f0ec73b59ed7e6596245ad91bbb0412e"
+  },
+  {
+    "dataset": "S05_Dy_GB_siteC_atom2",
+    "parsed_result": "analysis/parsed/S05_Dy_GB_siteC_atom2.json",
+    "calculation_directory": "calculations/exploratory_sites/S05_Dy_GB_siteC_atom2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/S05_Dy_GB_siteC_atom2/orca.out",
+    "original_output_sha256": "36e00654b8c9a3bfc52e4e2640996ab429f4a06f78654681af8ddc99df9bf599"
+  },
+  {
+    "dataset": "S06_Nd_GB_siteD_atom6",
+    "parsed_result": "analysis/parsed/S06_Nd_GB_siteD_atom6.json",
+    "calculation_directory": "calculations/exploratory_sites/S06_Nd_GB_siteD_atom6",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/S06_Nd_GB_siteD_atom6/orca.out",
+    "original_output_sha256": "5b05e3c2acd83538d3178b7f71aa23266bed79a2d1e6bde24c842e5573756e4d"
+  },
+  {
+    "dataset": "S07_Dy_GB_siteD_atom6",
+    "parsed_result": "analysis/parsed/S07_Dy_GB_siteD_atom6.json",
+    "calculation_directory": "calculations/exploratory_sites/S07_Dy_GB_siteD_atom6",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/S07_Dy_GB_siteD_atom6/orca.out",
+    "original_output_sha256": "b762daf18ff38019cc32e4ce4b6ccf73a388e6f93cba16d8fc2fb4714053865b"
+  },
+  {
+    "dataset": "S08_Nd_bulk_4g_atom5",
+    "parsed_result": "analysis/parsed/S08_Nd_bulk_4g_atom5.json",
+    "calculation_directory": "calculations/exploratory_sites/S08_Nd_bulk_4g_atom5",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/S08_Nd_bulk_4g_atom5/orca.out",
+    "original_output_sha256": "3ed0196764e002ff89d873ad5dd8425f6d236c52542dbe02e4c25d747464157e"
+  },
+  {
+    "dataset": "S09_Dy_bulk_4g_atom5",
+    "parsed_result": "analysis/parsed/S09_Dy_bulk_4g_atom5.json",
+    "calculation_directory": "calculations/exploratory_sites/S09_Dy_bulk_4g_atom5",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/new-runs-bigblue/S09_Dy_bulk_4g_atom5/orca.out",
+    "original_output_sha256": "457b5e46f1dfd74752e4266ffdd0191ad4ae984852a727ae7f6f984a67b570cd"
+  },
+  {
+    "dataset": "T02_Pr_bulk4f_atom5_R25",
+    "parsed_result": "analysis/parsed/T02_Pr_bulk4f_atom5_R25.json",
+    "calculation_directory": "calculations/matched_sites/T02_Pr_bulk4f_atom5_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T02_Pr_bulk4f_atom5_R25/orca.out",
+    "original_output_sha256": "aa6b4c6dadcc9aa2e8b35db719f55b8e40a3e14effb16361ffcf32d87adb3378"
+  },
+  {
+    "dataset": "T03_Nd_bulk4f_atom5_R25",
+    "parsed_result": "analysis/parsed/T03_Nd_bulk4f_atom5_R25.json",
+    "calculation_directory": "calculations/matched_sites/T03_Nd_bulk4f_atom5_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T03_Nd_bulk4f_atom5_R25/orca.out",
+    "original_output_sha256": "b437dde029caa70dbf5f5a7df58858fe46427ce5446faa15b86ad315ea84d485"
+  },
+  {
+    "dataset": "T04_Gd_bulk4f_atom5_R25",
+    "parsed_result": "analysis/parsed/T04_Gd_bulk4f_atom5_R25.json",
+    "calculation_directory": "calculations/matched_sites/T04_Gd_bulk4f_atom5_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T04_Gd_bulk4f_atom5_R25/orca.out",
+    "original_output_sha256": "e1b09eddec18aa5bc404ee07195cd166a0373722f8c55c3b94a94e22ff943fbc"
+  },
+  {
+    "dataset": "T05_Tb_bulk4f_atom5_R25",
+    "parsed_result": "analysis/parsed/T05_Tb_bulk4f_atom5_R25.json",
+    "calculation_directory": "calculations/matched_sites/T05_Tb_bulk4f_atom5_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T05_Tb_bulk4f_atom5_R25/orca.out",
+    "original_output_sha256": "07980101cfd9076fb72b0805f199ff009ed13746458cd811929d67032309612e"
+  },
+  {
+    "dataset": "T06_Dy_bulk4f_atom5_R25",
+    "parsed_result": "analysis/parsed/T06_Dy_bulk4f_atom5_R25.json",
+    "calculation_directory": "calculations/matched_sites/T06_Dy_bulk4f_atom5_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T06_Dy_bulk4f_atom5_R25/orca.out",
+    "original_output_sha256": "b414c0327287653c8b7a6cfddae03e0f7aa0b88c4a8d6fc1a9b942bb9915eec9"
+  },
+  {
+    "dataset": "T07_Ce_GBclassB_atom9_R25",
+    "parsed_result": "analysis/parsed/T07_Ce_GBclassB_atom9_R25.json",
+    "calculation_directory": "calculations/matched_sites/T07_Ce_GBclassB_atom9_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T07_Ce_GBclassB_atom9_R25/orca.out",
+    "original_output_sha256": "789a731151382501c27ff0c9a6dad655270dbb4058b77f9fd981ebff8f97260b"
+  },
+  {
+    "dataset": "T08_Pr_GBclassB_atom9_R25",
+    "parsed_result": "analysis/parsed/T08_Pr_GBclassB_atom9_R25.json",
+    "calculation_directory": "calculations/matched_sites/T08_Pr_GBclassB_atom9_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T08_Pr_GBclassB_atom9_R25/orca.out",
+    "original_output_sha256": "94a765b3922559feda6c51e00a460a9d1ba2be1a0f9c78eb96bcf470347e9fdf"
+  },
+  {
+    "dataset": "T09_Nd_GBclassB_atom9_R25",
+    "parsed_result": "analysis/parsed/T09_Nd_GBclassB_atom9_R25.json",
+    "calculation_directory": "calculations/matched_sites/T09_Nd_GBclassB_atom9_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T09_Nd_GBclassB_atom9_R25/orca.out",
+    "original_output_sha256": "083eb0c070947f393565cd7de3fb042c8f2e441470fa6195aa25d73f4dd0ea5c"
+  },
+  {
+    "dataset": "T10_Gd_GBclassB_atom9_R25",
+    "parsed_result": "analysis/parsed/T10_Gd_GBclassB_atom9_R25.json",
+    "calculation_directory": "calculations/matched_sites/T10_Gd_GBclassB_atom9_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T10_Gd_GBclassB_atom9_R25/orca.out",
+    "original_output_sha256": "7dcbe257c1398e63e577ad79d6e95e2739f441d3c21ff22f70caa2b65629b4c1"
+  },
+  {
+    "dataset": "T11_Tb_GBclassB_atom9_R25",
+    "parsed_result": "analysis/parsed/T11_Tb_GBclassB_atom9_R25.json",
+    "calculation_directory": "calculations/matched_sites/T11_Tb_GBclassB_atom9_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T11_Tb_GBclassB_atom9_R25/orca.out",
+    "original_output_sha256": "7d4281355fdee8707b68890fb2bdb932ea9ae3c0891d4b93281f5c00c08c3f17"
+  },
+  {
+    "dataset": "T12_Dy_GBclassB_atom9_R25",
+    "parsed_result": "analysis/parsed/T12_Dy_GBclassB_atom9_R25.json",
+    "calculation_directory": "calculations/matched_sites/T12_Dy_GBclassB_atom9_R25",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T12_Dy_GBclassB_atom9_R25/orca.out",
+    "original_output_sha256": "e9f54bcd18ad0580c597ca0ecf58923b65d6ec45f17986b26525f992823cf5e3"
+  },
+  {
+    "dataset": "T13_Nd_bulk_atom2_R25_NEVPT2",
+    "parsed_result": "analysis/parsed/T13_Nd_bulk_atom2_R25_NEVPT2.json",
+    "calculation_directory": "calculations/nevpt2_production/T13_Nd_bulk_atom2_R25_NEVPT2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T13_Nd_bulk_atom2_R25_NEVPT2/orca.out",
+    "original_output_sha256": "7467269d0d6a08c4410b14be47d43fa8a0d1ecf11e8a3e82dcb403e608c22866"
+  },
+  {
+    "dataset": "T14_Nd_GB_atom13_R25_NEVPT2",
+    "parsed_result": "analysis/parsed/T14_Nd_GB_atom13_R25_NEVPT2.json",
+    "calculation_directory": "calculations/nevpt2_production/T14_Nd_GB_atom13_R25_NEVPT2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T14_Nd_GB_atom13_R25_NEVPT2/orca.out",
+    "original_output_sha256": "fa8d31e585e1de0f28d3bba7826897f88c7fa907d9fbae48cd9338c85fc61bbf"
+  },
+  {
+    "dataset": "T15_Dy_bulk_atom2_R25_NEVPT2",
+    "parsed_result": "analysis/parsed/T15_Dy_bulk_atom2_R25_NEVPT2.json",
+    "calculation_directory": "calculations/nevpt2_production/T15_Dy_bulk_atom2_R25_NEVPT2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T15_Dy_bulk_atom2_R25_NEVPT2/orca.out",
+    "original_output_sha256": "5516fac30bcc9c58c8369d0d1896277a3fe57a6e81b2df02bdfd0d2254d1aad6"
+  },
+  {
+    "dataset": "T16_Dy_GB_atom13_R25_NEVPT2",
+    "parsed_result": "analysis/parsed/T16_Dy_GB_atom13_R25_NEVPT2.json",
+    "calculation_directory": "calculations/nevpt2_production/T16_Dy_GB_atom13_R25_NEVPT2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T16_Dy_GB_atom13_R25_NEVPT2/orca.out",
+    "original_output_sha256": "879ec4602fd5324074ed6ed6b095e9e16d1d1716dbb7f1962bc7f62d392b4a07"
+  },
+  {
+    "dataset": "T18_Ce_bulk4f_atom5_R25_CASCI",
+    "parsed_result": "analysis/parsed/T18_Ce_bulk4f_atom5_R25_CASCI.json",
+    "calculation_directory": "calculations/ce_active_space_tests/T18_Ce_bulk4f_atom5_R25_CASCI",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T18_Ce_bulk4f_atom5_R25_CASCI/orca.out",
+    "original_output_sha256": "05e60bd4d363c8e917ba315926fb0dc423cd53b66cafa468fdd2c9e7b2dd4201"
+  },
+  {
+    "dataset": "T19_Ce_GB_atom13_R25_CASCI",
+    "parsed_result": "analysis/parsed/T19_Ce_GB_atom13_R25_CASCI.json",
+    "calculation_directory": "calculations/ce_active_space_tests/T19_Ce_GB_atom13_R25_CASCI",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T19_Ce_GB_atom13_R25_CASCI/orca.out",
+    "original_output_sha256": "81fc0b1b2c6fff107618034430179a7a1d4ee695c2307c2b1eba253cf35f8dec"
+  },
+  {
+    "dataset": "T20_Ce_bulk_atom2_R25_CASCI_check",
+    "parsed_result": "analysis/parsed/T20_Ce_bulk_atom2_R25_CASCI_check.json",
+    "calculation_directory": "calculations/ce_active_space_tests/T20_Ce_bulk_atom2_R25_CASCI_check",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T20_Ce_bulk_atom2_R25_CASCI_check/orca.out",
+    "original_output_sha256": "a797c1ac5eecc6dc18734c0c732d9c25f4c5143adc840e1aa921e96eb7a44d88"
+  },
+  {
+    "dataset": "T21_Ce_GBclassB_atom9_R25_CASCI_check",
+    "parsed_result": "analysis/parsed/T21_Ce_GBclassB_atom9_R25_CASCI_check.json",
+    "calculation_directory": "calculations/ce_active_space_tests/T21_Ce_GBclassB_atom9_R25_CASCI_check",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T21_Ce_GBclassB_atom9_R25_CASCI_check/orca.out",
+    "original_output_sha256": "441c0792b7935137ab229f535443e4bbba34265e03f868bb89f790d7f3b2db6e"
+  },
+  {
+    "dataset": "T22_Ce_GB_atom13_R18_CASCI_check",
+    "parsed_result": "analysis/parsed/T22_Ce_GB_atom13_R18_CASCI_check.json",
+    "calculation_directory": "calculations/ce_active_space_tests/T22_Ce_GB_atom13_R18_CASCI_check",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/T22_Ce_GB_atom13_R18_CASCI_check/orca.out",
+    "original_output_sha256": "ffa5643943b8e770637d718e11d43ebdd662c38ed349234fb8ed16af423a36f2"
+  },
+  {
+    "dataset": "U01_Nd_bulk4f5_ECPlevel_pc",
+    "parsed_result": "analysis/parsed/U01_Nd_bulk4f5_ECPlevel_pc.json",
+    "calculation_directory": "calculations/capped_ecp_test/U01_Nd_bulk4f5_ECPlevel_pc",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U01_Nd_bulk4f5_ECPlevel_pc/orca.out",
+    "original_output_sha256": "052aa41f2e3ed9156e2c9a2a2db388fbd6afd2b969342d8ebbebc08964318d0a"
+  },
+  {
+    "dataset": "U02_Nd_bulk4f5_ECPlevel_cecp",
+    "parsed_result": "analysis/parsed/U02_Nd_bulk4f5_ECPlevel_cecp.json",
+    "calculation_directory": "calculations/capped_ecp_test/U02_Nd_bulk4f5_ECPlevel_cecp",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U02_Nd_bulk4f5_ECPlevel_cecp/orca.out",
+    "original_output_sha256": "9d6e030d059c703d8d7a783eae77978d619cf536e8ea647f47bd8f154c6c8435"
+  },
+  {
+    "dataset": "U03_Nd_GBA13_ECPlevel_pc",
+    "parsed_result": "analysis/parsed/U03_Nd_GBA13_ECPlevel_pc.json",
+    "calculation_directory": "calculations/capped_ecp_test/U03_Nd_GBA13_ECPlevel_pc",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U03_Nd_GBA13_ECPlevel_pc/orca.out",
+    "original_output_sha256": "18860150993fa8f7e962f5eff43c01df96391d0aabcb73e9e648d372218be4d9"
+  },
+  {
+    "dataset": "U04_Nd_GBA13_ECPlevel_cecp",
+    "parsed_result": "analysis/parsed/U04_Nd_GBA13_ECPlevel_cecp.json",
+    "calculation_directory": "calculations/capped_ecp_test/U04_Nd_GBA13_ECPlevel_cecp",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U04_Nd_GBA13_ECPlevel_cecp/orca.out",
+    "original_output_sha256": "f87ee0ef012dbbf3d9b9eeb8b31ed353a2d7c76a03176e73cd27cfd6056880bc"
+  },
+  {
+    "dataset": "U05_Nd_bulk4g2_ECPlevel_pc",
+    "parsed_result": "analysis/parsed/U05_Nd_bulk4g2_ECPlevel_pc.json",
+    "calculation_directory": "calculations/capped_ecp_test/U05_Nd_bulk4g2_ECPlevel_pc",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U05_Nd_bulk4g2_ECPlevel_pc/orca.out",
+    "original_output_sha256": "0ae7b5a63d226a2484c384b265b9cbddb6f22fb97967d88a403becbd43d073a1"
+  },
+  {
+    "dataset": "U06_Nd_bulk4g2_ECPlevel_cecp",
+    "parsed_result": "analysis/parsed/U06_Nd_bulk4g2_ECPlevel_cecp.json",
+    "calculation_directory": "calculations/capped_ecp_test/U06_Nd_bulk4g2_ECPlevel_cecp",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U06_Nd_bulk4g2_ECPlevel_cecp/orca.out",
+    "original_output_sha256": "abd85aed8ff07d033bdf9a3b51b5e46a2c757da826a667b736a0ec6e62ee825b"
+  },
+  {
+    "dataset": "U07_Nd_GBB9_ECPlevel_pc",
+    "parsed_result": "analysis/parsed/U07_Nd_GBB9_ECPlevel_pc.json",
+    "calculation_directory": "calculations/capped_ecp_test/U07_Nd_GBB9_ECPlevel_pc",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U07_Nd_GBB9_ECPlevel_pc/orca.out",
+    "original_output_sha256": "486f1c5bd2733bd74bfec314a01ce16751bf6c023ddd5898e7df41087df3ed02"
+  },
+  {
+    "dataset": "U08_Nd_GBB9_ECPlevel_cecp",
+    "parsed_result": "analysis/parsed/U08_Nd_GBB9_ECPlevel_cecp.json",
+    "calculation_directory": "calculations/capped_ecp_test/U08_Nd_GBB9_ECPlevel_cecp",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U08_Nd_GBB9_ECPlevel_cecp/orca.out",
+    "original_output_sha256": "1a8f053333edcfc655a15c6409a66acd4b6a9958f25ab9127fabda66e1af5250"
+  },
+  {
+    "dataset": "U09_Dy_bulk4f5_ECPlevel_pc",
+    "parsed_result": "analysis/parsed/U09_Dy_bulk4f5_ECPlevel_pc.json",
+    "calculation_directory": "calculations/capped_ecp_test/U09_Dy_bulk4f5_ECPlevel_pc",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U09_Dy_bulk4f5_ECPlevel_pc/orca.out",
+    "original_output_sha256": "084dcf43723967f2c3f324b9551b9f404a0a5cc80c8f5b6c7c374f9fb1457c37"
+  },
+  {
+    "dataset": "U10_Dy_bulk4f5_ECPlevel_cecp",
+    "parsed_result": "analysis/parsed/U10_Dy_bulk4f5_ECPlevel_cecp.json",
+    "calculation_directory": "calculations/capped_ecp_test/U10_Dy_bulk4f5_ECPlevel_cecp",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U10_Dy_bulk4f5_ECPlevel_cecp/orca.out",
+    "original_output_sha256": "98e63421768dff620b56e0969bef75279ac5f9328e1d2f709befdba0523f9314"
+  },
+  {
+    "dataset": "U11_Dy_GBA13_ECPlevel_pc",
+    "parsed_result": "analysis/parsed/U11_Dy_GBA13_ECPlevel_pc.json",
+    "calculation_directory": "calculations/capped_ecp_test/U11_Dy_GBA13_ECPlevel_pc",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U11_Dy_GBA13_ECPlevel_pc/orca.out",
+    "original_output_sha256": "0c82e2ad28d73c055ce71e26271f95ddd5d9e9965722ee80b077492696e68afe"
+  },
+  {
+    "dataset": "U12_Dy_GBA13_ECPlevel_cecp",
+    "parsed_result": "analysis/parsed/U12_Dy_GBA13_ECPlevel_cecp.json",
+    "calculation_directory": "calculations/capped_ecp_test/U12_Dy_GBA13_ECPlevel_cecp",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U12_Dy_GBA13_ECPlevel_cecp/orca.out",
+    "original_output_sha256": "da7429b22f0724bd6768108dcb4408ba793c7e1ecde5aa85276584183123eb56"
+  },
+  {
+    "dataset": "U13_Dy_bulk4g2_ECPlevel_pc",
+    "parsed_result": "analysis/parsed/U13_Dy_bulk4g2_ECPlevel_pc.json",
+    "calculation_directory": "calculations/capped_ecp_test/U13_Dy_bulk4g2_ECPlevel_pc",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U13_Dy_bulk4g2_ECPlevel_pc/orca.out",
+    "original_output_sha256": "4d7c0f20d518b17090dd48635e1046a302bd9c53b3147fab160a0713b435bf15"
+  },
+  {
+    "dataset": "U14_Dy_bulk4g2_ECPlevel_cecp",
+    "parsed_result": "analysis/parsed/U14_Dy_bulk4g2_ECPlevel_cecp.json",
+    "calculation_directory": "calculations/capped_ecp_test/U14_Dy_bulk4g2_ECPlevel_cecp",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U14_Dy_bulk4g2_ECPlevel_cecp/orca.out",
+    "original_output_sha256": "edf5cbee7aee3db1919fc4f1596f4f7c93cd7c7e1356dbcce6e74ce3bf9da73b"
+  },
+  {
+    "dataset": "U15_Dy_GBB9_ECPlevel_pc",
+    "parsed_result": "analysis/parsed/U15_Dy_GBB9_ECPlevel_pc.json",
+    "calculation_directory": "calculations/capped_ecp_test/U15_Dy_GBB9_ECPlevel_pc",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U15_Dy_GBB9_ECPlevel_pc/orca.out",
+    "original_output_sha256": "4b7f1064bac595374d1b2e8fa610927ce4e6832b619d8177e01710d3bbd87051"
+  },
+  {
+    "dataset": "U16_Dy_GBB9_ECPlevel_cecp",
+    "parsed_result": "analysis/parsed/U16_Dy_GBB9_ECPlevel_cecp.json",
+    "calculation_directory": "calculations/capped_ecp_test/U16_Dy_GBB9_ECPlevel_cecp",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/U16_Dy_GBB9_ECPlevel_cecp/orca.out",
+    "original_output_sha256": "9719d795e55a5479bd73f78ad490812e7878fb49cdde88837d3ab9c194982689"
+  },
+  {
+    "dataset": "V02_Nd_GBA13_Zrsub",
+    "parsed_result": "analysis/parsed/V02_Nd_GBA13_Zrsub.json",
+    "calculation_directory": "calculations/boundary_chemistry/V02_Nd_GBA13_Zrsub",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/V02_Nd_GBA13_Zrsub/orca.out",
+    "original_output_sha256": "8ca2e052b3c490858270c9665a4d15ba8e8ac23bc0785e591c5a82fb75470b9a"
+  },
+  {
+    "dataset": "V03_Nd_GBB9_Bsub",
+    "parsed_result": "analysis/parsed/V03_Nd_GBB9_Bsub.json",
+    "calculation_directory": "calculations/boundary_chemistry/V03_Nd_GBB9_Bsub",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/V03_Nd_GBB9_Bsub/orca.out",
+    "original_output_sha256": "1bf1d48932393b5ee48c913740d7e5eb92163b28cefd01b6ed6e3232a90b12e6"
+  },
+  {
+    "dataset": "V04_Nd_GBB9_Zrsub",
+    "parsed_result": "analysis/parsed/V04_Nd_GBB9_Zrsub.json",
+    "calculation_directory": "calculations/boundary_chemistry/V04_Nd_GBB9_Zrsub",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/V04_Nd_GBB9_Zrsub/orca.out",
+    "original_output_sha256": "c37522e432babc4b6442c6002bce9a6a26305f747d23964452b72f1bb82615bc"
+  },
+  {
+    "dataset": "V05_Dy_GBA13_Bsub",
+    "parsed_result": "analysis/parsed/V05_Dy_GBA13_Bsub.json",
+    "calculation_directory": "calculations/boundary_chemistry/V05_Dy_GBA13_Bsub",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/V05_Dy_GBA13_Bsub/orca.out",
+    "original_output_sha256": "a907923949b76df714a902ea1557c4d2b2e8de4aaaf0b1726d9090473149713a"
+  },
+  {
+    "dataset": "V06_Dy_GBA13_Zrsub",
+    "parsed_result": "analysis/parsed/V06_Dy_GBA13_Zrsub.json",
+    "calculation_directory": "calculations/boundary_chemistry/V06_Dy_GBA13_Zrsub",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/V06_Dy_GBA13_Zrsub/orca.out",
+    "original_output_sha256": "cb91c7e42398505bac27aa284ee865a6cea1a89711b74d7c19781726a14ff465"
+  },
+  {
+    "dataset": "V07_Dy_GBB9_Bsub",
+    "parsed_result": "analysis/parsed/V07_Dy_GBB9_Bsub.json",
+    "calculation_directory": "calculations/boundary_chemistry/V07_Dy_GBB9_Bsub",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/V07_Dy_GBB9_Bsub/orca.out",
+    "original_output_sha256": "6ecb7001163be374864a344b77e92ed24303fa64eda898e95d1d838ccb38594f"
+  },
+  {
+    "dataset": "V08_Dy_GBB9_Zrsub",
+    "parsed_result": "analysis/parsed/V08_Dy_GBB9_Zrsub.json",
+    "calculation_directory": "calculations/boundary_chemistry/V08_Dy_GBB9_Zrsub",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/V08_Dy_GBB9_Zrsub/orca.out",
+    "original_output_sha256": "c1e09af5b4770120e8e7102ee637ea796d4353be6713c3f511ca5fbcd9b1d275"
+  },
+  {
+    "dataset": "W01_Nd_GBC2",
+    "parsed_result": "analysis/parsed/W01_Nd_GBC2.json",
+    "calculation_directory": "calculations/midgrain_sites/W01_Nd_GBC2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/W01_Nd_GBC2/orca.out",
+    "original_output_sha256": "c31e23f47285545bc72744acac0e834911a5f26ef3b8abcc568338b2f94aa1f2"
+  },
+  {
+    "dataset": "W02_Nd_GBD6",
+    "parsed_result": "analysis/parsed/W02_Nd_GBD6.json",
+    "calculation_directory": "calculations/midgrain_sites/W02_Nd_GBD6",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/W02_Nd_GBD6/orca.out",
+    "original_output_sha256": "c6d750df6936289b79835f24c3c1adcd0c308eebd57d9196613cbd3a43540699"
+  },
+  {
+    "dataset": "W03_Dy_GBC2",
+    "parsed_result": "analysis/parsed/W03_Dy_GBC2.json",
+    "calculation_directory": "calculations/midgrain_sites/W03_Dy_GBC2",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/W03_Dy_GBC2/orca.out",
+    "original_output_sha256": "1279c0a1d0a0948a280b8286ffd9805fcea95b4ecab9ec5de29eceff5d6fa357"
+  },
+  {
+    "dataset": "W04_Dy_GBD6",
+    "parsed_result": "analysis/parsed/W04_Dy_GBD6.json",
+    "calculation_directory": "calculations/midgrain_sites/W04_Dy_GBD6",
+    "raw_output": null,
+    "original_source": "Materialia/revised-casscf-runs/local-12-runs/W04_Dy_GBD6/orca.out",
+    "original_output_sha256": "078751908a079b3ca32f3f9903f38daef563430fe2566f019c9eeb6820b88942"
+  }
+]

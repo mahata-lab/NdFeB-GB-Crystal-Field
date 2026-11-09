@@ -1,0 +1,24 @@
+{
+ "job": "N03_Dy_bulk_atom2_NEVPT2",
+ "ion": "Dy",
+ "environment": "bulk",
+ "atom_1based": 2,
+ "center_A": [
+  3.126670125106339,
+  3.126670125106339,
+  6.064974480607277
+ ],
+ "embedding": "original",
+ "basis": "SARC2-DKH-QZVP",
+ "nevpt2": true,
+ "n_pc": 67,
+ "net_charge": 9.0,
+ "min_pc_dist": 2.8942,
+ "max_pc_dist": 7.712,
+ "charged_dipole_eA": [
+  15.02,
+  15.02,
+  -36.39
+ ],
+ "purpose": "Methods: SC-NEVPT2 on published embedding"
+}

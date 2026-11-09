@@ -1,0 +1,7 @@
+ion,environment,grid_norm,orbital_r_rms_A,source
+Ce,Bulk,0.998413002106202,0.8373911321140215,analysis/orbitals/Ce_Bulk_mo27a.cube.gz
+Ce,GB,1.001808125728264,0.6094749207201913,analysis/orbitals/Ce_GB_mo27a.cube.gz
+Pr,Bulk,0.9989413258298008,0.6612050124576265,analysis/orbitals/Pr_Bulk_mo27a.cube.gz
+Pr,GB,1.0023162601828866,0.5848866923615386,analysis/orbitals/Pr_GB_mo27a.cube.gz
+Dy,Bulk,1.000352645807795,0.47147830850408096,analysis/orbitals/Dy_Bulk_mo27a.cube.gz
+Dy,GB,1.008776256243641,0.4646472373455699,analysis/orbitals/Dy_GB_mo27a.cube.gz
